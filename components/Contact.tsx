@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView, type Easing } from "framer-motion";
-import { Building2, CheckCircle, Mail, MapPin, Send } from "lucide-react";
+import { Building2, CheckCircle, Mail, Send } from "lucide-react";
 import { useRef, useState } from "react";
 
 const easeOutExpo = [0.22, 1, 0.36, 1] as Easing;
@@ -280,11 +280,11 @@ export default function Contact() {
                 </a>
               ),
             },
-            {
-              Icon: MapPin,
-              label: "ADDRESS",
-              value: "49 Gelligaer Street, Cardiff, Wales, CF24 4LD",
-            },
+            // {
+            //   Icon: MapPin,
+            //   label: "ADDRESS",
+            //   value: "49 Gelligaer Street, Cardiff, Wales, CF24 4LD",
+            // },
             {
               Icon: Building2,
               label: "COMPANY",
@@ -360,7 +360,7 @@ export default function Contact() {
           ))}
 
           {/* Legal note */}
-          <p
+          {/* <p
             style={{
               fontFamily: "var(--font-geist)",
               fontWeight: 400,
@@ -373,7 +373,7 @@ export default function Contact() {
             Fixmet Solutions Ltd is registered in England &amp; Wales (Company
             No.&nbsp;17008216). Registered office: 49 Gelligaer Street, Cardiff,
             Wales, CF24 4LD.
-          </p>
+          </p> */}
         </motion.div>
       </div>
     </section>
