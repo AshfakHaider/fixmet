@@ -1,48 +1,51 @@
-'use client'
+"use client";
 
-import { useRef } from 'react'
-import { motion, useInView, type Easing } from 'framer-motion'
-import { Globe, ShieldCheck, Layers, Clock, CheckCircle2 } from 'lucide-react'
+import { motion, useInView, type Easing } from "framer-motion";
+import { CheckCircle2, Clock, Globe, Layers, ShieldCheck } from "lucide-react";
+import { useRef } from "react";
 
-const easeOutExpo = [0.22, 1, 0.36, 1] as Easing
+const easeOutExpo = [0.22, 1, 0.36, 1] as Easing;
 
 const stats = [
-  { Icon: Globe, value: 'UK', label: 'Registered & operating' },
-  { Icon: ShieldCheck, value: '100%', label: 'Verified tradespeople' },
-  { Icon: Layers, value: '5', label: 'Service categories' },
-  { Icon: Clock, value: '24/7', label: 'Emergency availability' },
-]
+  { Icon: Globe, value: "UK", label: "Registered & operating" },
+  { Icon: ShieldCheck, value: "100%", label: "Verified tradespeople" },
+  { Icon: Layers, value: "5", label: "Service categories" },
+  { Icon: Clock, value: "24/7", label: "Emergency availability" },
+];
 
 const companyRows = [
-  { label: 'Legal name', value: 'Fixmet Solutions Ltd' },
-  { label: 'Company number', value: '17008216' },
-  { label: 'Registered in', value: 'England & Wales' },
-  { label: 'Registered office', value: '49 Gelligaer Street, Cardiff, Wales, CF24 4LD' },
-  { label: 'Trading as', value: 'Fixmate' },
-  { label: 'Contact', value: 'info@fixmet.co.uk' },
-  { label: 'SIC code', value: '63120 — Web portals' },
-]
+  { label: "Legal name", value: "Fixmet Solutions Ltd" },
+  { label: "Company number", value: "17008216" },
+  { label: "Registered in", value: "England & Wales" },
+  {
+    label: "Registered office",
+    value: "49 Gelligaer Street, Cardiff, Wales, CF24 4LD",
+  },
+  { label: "Trading as", value: "Fixmate" },
+  { label: "Contact", value: "info@fixmet.co.uk" },
+  { label: "SIC code", value: "63120 — Web portals" },
+];
 
 export default function About() {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <section
       id="about"
       className="noise"
-      style={{ background: 'var(--bg-secondary)', padding: '120px 0' }}
+      style={{ background: "var(--bg-secondary)", padding: "120px 0" }}
     >
       <div
         ref={ref}
         style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '0 24px',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '64px',
-          alignItems: 'start',
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "0 24px",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "64px",
+          alignItems: "start",
         }}
         className="about-grid"
       >
@@ -55,13 +58,13 @@ export default function About() {
           {/* Label */}
           <p
             style={{
-              fontFamily: 'var(--font-geist)',
+              fontFamily: "var(--font-geist)",
               fontWeight: 500,
-              fontSize: '12px',
-              letterSpacing: '0.15em',
-              color: 'var(--accent-cyan)',
-              textTransform: 'uppercase',
-              marginBottom: '12px',
+              fontSize: "12px",
+              letterSpacing: "0.15em",
+              color: "var(--accent-cyan)",
+              textTransform: "uppercase",
+              marginBottom: "12px",
             }}
           >
             About Fixmate
@@ -70,11 +73,11 @@ export default function About() {
           {/* Headline */}
           <h2
             style={{
-              fontFamily: 'var(--font-syne)',
+              fontFamily: "var(--font-syne)",
               fontWeight: 800,
-              fontSize: 'clamp(28px, 3.5vw, 44px)',
-              color: 'var(--text-primary)',
-              marginBottom: '24px',
+              fontSize: "clamp(28px, 3.5vw, 44px)",
+              color: "var(--text-primary)",
+              marginBottom: "24px",
               lineHeight: 1.15,
             }}
           >
@@ -84,52 +87,53 @@ export default function About() {
           {/* Body */}
           <p
             style={{
-              fontFamily: 'var(--font-geist)',
+              fontFamily: "var(--font-geist)",
               fontWeight: 400,
-              fontSize: '16px',
-              color: 'var(--text-secondary)',
+              fontSize: "16px",
+              color: "var(--text-secondary)",
               lineHeight: 1.8,
-              marginBottom: '32px',
+              marginBottom: "32px",
             }}
           >
             Fixmate is a UK-registered technology platform designed to eliminate
-            the stress of finding reliable help during a home emergency. We connect
-            homeowners and occupiers with verified, insured tradespeople — removing
-            the need for phone calls, guesswork, and waiting. Our platform brings
-            the speed and simplicity of on-demand apps to the trades industry.
+            the stress of finding reliable help during a home emergency. We
+            connect homeowners and occupiers with verified, insured tradespeople
+            — removing the need for phone calls, guesswork, and waiting. Our
+            platform brings the speed and simplicity of on-demand apps to the
+            trades industry.
           </p>
 
           {/* Company Details Box */}
-          <div
+          {/* <div
             style={{
-              border: '1px solid var(--border)',
-              borderRadius: '12px',
-              padding: '20px 24px',
-              background: 'rgba(37,99,235,0.05)',
-              marginBottom: '20px',
+              border: "1px solid var(--border)",
+              borderRadius: "12px",
+              padding: "20px 24px",
+              background: "rgba(37,99,235,0.05)",
+              marginBottom: "20px",
             }}
           >
             {companyRows.map(({ label, value }, i) => (
               <div
                 key={label}
                 style={{
-                  display: 'flex',
-                  gap: '16px',
-                  padding: '8px 0',
+                  display: "flex",
+                  gap: "16px",
+                  padding: "8px 0",
                   borderBottom:
                     i < companyRows.length - 1
-                      ? '1px solid rgba(37,99,235,0.08)'
-                      : 'none',
-                  flexWrap: 'wrap',
+                      ? "1px solid rgba(37,99,235,0.08)"
+                      : "none",
+                  flexWrap: "wrap",
                 }}
               >
                 <span
                   style={{
-                    fontFamily: 'var(--font-geist)',
+                    fontFamily: "var(--font-geist)",
                     fontWeight: 500,
-                    fontSize: '13px',
-                    color: 'var(--text-muted)',
-                    minWidth: '140px',
+                    fontSize: "13px",
+                    color: "var(--text-muted)",
+                    minWidth: "140px",
                     flexShrink: 0,
                   }}
                 >
@@ -137,16 +141,19 @@ export default function About() {
                 </span>
                 <span
                   style={{
-                    fontFamily: 'var(--font-geist)',
+                    fontFamily: "var(--font-geist)",
                     fontWeight: 500,
-                    fontSize: '13px',
-                    color: 'var(--text-primary)',
+                    fontSize: "13px",
+                    color: "var(--text-primary)",
                   }}
                 >
-                  {label === 'Contact' ? (
+                  {label === "Contact" ? (
                     <a
                       href="mailto:info@fixmet.co.uk"
-                      style={{ color: 'var(--text-primary)', textDecoration: 'none' }}
+                      style={{
+                        color: "var(--text-primary)",
+                        textDecoration: "none",
+                      }}
                     >
                       {value}
                     </a>
@@ -156,23 +163,26 @@ export default function About() {
                 </span>
               </div>
             ))}
-          </div>
+          </div> */}
 
           {/* Registered Badge */}
           <div
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
             }}
           >
-            <CheckCircle2 size={16} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
+            <CheckCircle2
+              size={16}
+              style={{ color: "var(--accent-cyan)", flexShrink: 0 }}
+            />
             <span
               style={{
-                fontFamily: 'var(--font-geist)',
+                fontFamily: "var(--font-geist)",
                 fontWeight: 500,
-                fontSize: '13px',
-                color: 'var(--accent-cyan)',
+                fontSize: "13px",
+                color: "var(--accent-cyan)",
               }}
             >
               Active company — Companies House verified
@@ -186,9 +196,9 @@ export default function About() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: easeOutExpo, delay: 0.15 }}
           style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '16px',
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "16px",
           }}
         >
           {stats.map(({ Icon, value, label }, i) => (
@@ -202,42 +212,48 @@ export default function About() {
                 delay: 0.2 + i * 0.1,
               }}
               style={{
-                background: 'var(--bg-card)',
-                border: '1px solid var(--border)',
-                borderRadius: '14px',
-                padding: '28px 24px',
-                transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
+                background: "var(--bg-card)",
+                border: "1px solid var(--border)",
+                borderRadius: "14px",
+                padding: "28px 24px",
+                transition: "border-color 0.3s ease, box-shadow 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement
-                el.style.borderColor = 'var(--border-hover)'
-                el.style.boxShadow = '0 0 32px var(--glow)'
+                const el = e.currentTarget as HTMLElement;
+                el.style.borderColor = "var(--border-hover)";
+                el.style.boxShadow = "0 0 32px var(--glow)";
               }}
               onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement
-                el.style.borderColor = 'var(--border)'
-                el.style.boxShadow = 'none'
+                const el = e.currentTarget as HTMLElement;
+                el.style.borderColor = "var(--border)";
+                el.style.boxShadow = "none";
               }}
             >
-              <Icon size={24} style={{ color: 'var(--accent-blue-bright)', marginBottom: '12px' }} />
+              <Icon
+                size={24}
+                style={{
+                  color: "var(--accent-blue-bright)",
+                  marginBottom: "12px",
+                }}
+              />
               <p
                 style={{
-                  fontFamily: 'var(--font-syne)',
+                  fontFamily: "var(--font-syne)",
                   fontWeight: 800,
-                  fontSize: '36px',
-                  color: 'var(--text-primary)',
+                  fontSize: "36px",
+                  color: "var(--text-primary)",
                   lineHeight: 1,
-                  marginBottom: '8px',
+                  marginBottom: "8px",
                 }}
               >
                 {value}
               </p>
               <p
                 style={{
-                  fontFamily: 'var(--font-geist)',
+                  fontFamily: "var(--font-geist)",
                   fontWeight: 400,
-                  fontSize: '14px',
-                  color: 'var(--text-secondary)',
+                  fontSize: "14px",
+                  color: "var(--text-secondary)",
                 }}
               >
                 {label}
@@ -247,5 +263,5 @@ export default function About() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
