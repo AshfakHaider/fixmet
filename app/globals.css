@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #020818;
+  --bg-secondary: #060f2a;
+  --bg-card: #0a1535;
+  --bg-card-hover: #0d1c42;
+  --accent-blue: #2563EB;
+  --accent-blue-light: #3B82F6;
+  --accent-blue-bright: #60A5FA;
+  --accent-cyan: #06B6D4;
+  --text-primary: #F0F6FF;
+  --text-secondary: #94A3B8;
+  --text-muted: #475569;
+  --border: rgba(37, 99, 235, 0.2);
+  --border-hover: rgba(59, 130, 246, 0.5);
+  --glow: rgba(37, 99, 235, 0.15);
+  --font-geist: 'Geist', sans-serif;
+  --font-syne: 'Syne', sans-serif;
+}
+
+/* Base reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Responsive grids ── */
+
+/* Services: 5 → 3 → 2 cols */
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .services-grid > *:nth-child(5) {
+    grid-column: 2 / 3;
+  }
+}
+@media (max-width: 640px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .services-grid > *:nth-child(5) {
+    grid-column: auto !important;
+  }
+}
+
+/* Trust: 2 → 1 col */
+@media (max-width: 640px) {
+  .trust-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* About: 2 → 1 col */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 48px !important;
+  }
+}
+
+/* Contact: 2 → 1 col */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 48px !important;
+  }
+}
+
+/* Footer: 3 → 1 col */
+@media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-blue);
+  border-radius: 3px;
+}
+
+/* Selection */
+::selection {
+  background: rgba(37, 99, 235, 0.3);
+  color: var(--text-primary);
+}
+
+/* Focus */
+*:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Noise texture overlay */
+.noise {
+  position: relative;
+}
+.noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Pulsing dot animation */
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 6px var(--accent-cyan);
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 14px var(--accent-cyan);
+  }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Scroll indicator bob */
+@keyframes bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.bob {
+  animation: bob 2s ease-in-out infinite;
+}
+
+/* Input base styles */
+input, textarea {
+  font-family: inherit;
+}
+
+/* Section base */
+section {
+  position: relative;
+  overflow: hidden;
+}
