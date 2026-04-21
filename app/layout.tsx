@@ -32,6 +32,8 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   alternates: { canonical: 'https://www.fixmet.co.uk' },
+  verification: {
+  google: "google1bf61f721282718c",},
 }
 
 export const viewport = {
