@@ -4,8 +4,8 @@ import Footer from '@/components/Footer'
 import { ArrowLeft } from 'lucide-react'
 
 export const metadata = {
-  title: 'Privacy Policy — Fixmate',
-  description: 'Privacy Policy for Fixmet Solutions Ltd, trading as Fixmate.',
+  title: 'Privacy Policy — Fixmet',
+  description: 'Privacy Policy for Fixmet Solutions Ltd, trading as Fixmet.',
 }
 
 export default function PrivacyPage() {
@@ -54,7 +54,7 @@ export default function PrivacyPage() {
             {[
               {
                 title: '1. Who we are',
-                body: 'This Privacy Policy applies to Fixmet Solutions Ltd, registered in England & Wales (Company No. 17008216), trading as Fixmate. Our registered office is at 49 Gelligaer Street, Cardiff, Wales, CF24 4LD. We are the data controller for personal data collected through the Fixmate platform and website at www.fixmet.co.uk.',
+                body: 'This Privacy Policy applies to Fixmet Solutions Ltd, registered in England & Wales (Company No. 17008216), trading as Fixmet. Our registered office is at 49 Gelligaer Street, Cardiff, Wales, CF24 4LD. We are the data controller for personal data collected through the Fixmet platform and website at www.fixmet.co.uk.',
               },
               {
                 title: '2. What data we collect',
@@ -62,7 +62,7 @@ export default function PrivacyPage() {
               },
               {
                 title: '3. How we use your data',
-                body: 'We use your personal data to: (a) provide and operate the Fixmate platform and connect you with tradespeople; (b) communicate with you about your service requests; (c) send you updates and marketing communications where you have consented; (d) improve and develop our platform and services; (e) comply with our legal obligations.',
+                body: 'We use your personal data to: (a) provide and operate the Fixmet platform and connect you with tradespeople; (b) communicate with you about your service requests; (c) send you updates and marketing communications where you have consented; (d) improve and develop our platform and services; (e) comply with our legal obligations.',
               },
               {
                 title: '4. Legal basis for processing',
@@ -74,7 +74,7 @@ export default function PrivacyPage() {
               },
               {
                 title: '6. Data retention',
-                body: 'We retain your personal data for as long as necessary to provide our services and comply with our legal obligations. Account data is retained for the duration of your relationship with Fixmate and for up to 7 years thereafter to comply with financial and legal record-keeping requirements.',
+                body: 'We retain your personal data for as long as necessary to provide our services and comply with our legal obligations. Account data is retained for the duration of your relationship with Fixmet and for up to 7 years thereafter to comply with financial and legal record-keeping requirements.',
               },
               {
                 title: '7. Your rights',

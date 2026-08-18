@@ -21,7 +21,7 @@ const companyRows = [
     label: "Registered office",
     value: "49 Gelligaer Street, Cardiff, Wales, CF24 4LD",
   },
-  { label: "Trading as", value: "Fixmate" },
+  { label: "Trading as", value: "Fixmet" },
   { label: "Contact", value: "info@fixmet.co.uk" },
   { label: "SIC code", value: "63120 — Web portals" },
 ];
@@ -67,7 +67,7 @@ export default function About() {
               marginBottom: "12px",
             }}
           >
-            About Fixmate
+            About Fixmet
           </p>
 
           {/* Headline */}
@@ -95,7 +95,7 @@ export default function About() {
               marginBottom: "32px",
             }}
           >
-            Fixmate is a UK-registered technology platform designed to eliminate
+            Fixmet is a UK-registered technology platform designed to eliminate
             the stress of finding reliable help during a home emergency. We
             connect homeowners and occupiers with verified, insured tradespeople
             — removing the need for phone calls, guesswork, and waiting. Our

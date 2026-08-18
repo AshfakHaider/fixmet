@@ -4,8 +4,8 @@ import Footer from '@/components/Footer'
 import { ArrowLeft } from 'lucide-react'
 
 export const metadata = {
-  title: 'Terms of Service — Fixmate',
-  description: 'Terms of Service for Fixmet Solutions Ltd, trading as Fixmate.',
+  title: 'Terms of Service — Fixmet',
+  description: 'Terms of Service for Fixmet Solutions Ltd, trading as Fixmet.',
 }
 
 export default function TermsPage() {
@@ -54,23 +54,23 @@ export default function TermsPage() {
             {[
               {
                 title: '1. About these terms',
-                body: 'These Terms of Service govern your use of the Fixmate platform and website, operated by Fixmet Solutions Ltd, a company registered in England & Wales (Company No. 17008216) with a registered office at 49 Gelligaer Street, Cardiff, Wales, CF24 4LD, trading as Fixmate. By using our platform, you agree to these terms.',
+                body: 'These Terms of Service govern your use of the Fixmet platform and website, operated by Fixmet Solutions Ltd, a company registered in England & Wales (Company No. 17008216) with a registered office at 49 Gelligaer Street, Cardiff, Wales, CF24 4LD, trading as Fixmet. By using our platform, you agree to these terms.',
               },
               {
-                title: '2. The Fixmate platform',
-                body: 'Fixmate is a technology platform that connects homeowners and occupiers with independent, self-employed tradespeople. Fixme Solutions Ltd acts as a technology intermediary and is not itself a provider of trade or home services. The tradespeople you engage through Fixmate are independent contractors.',
+                title: '2. The Fixmet platform',
+                body: 'Fixmet is a technology platform that connects homeowners and occupiers with independent, self-employed tradespeople. Fixme Solutions Ltd acts as a technology intermediary and is not itself a provider of trade or home services. The tradespeople you engage through Fixmet are independent contractors.',
               },
               {
                 title: '3. Eligibility',
-                body: 'You must be at least 18 years of age and a resident of the United Kingdom to use Fixmate as a customer. By using our platform, you confirm that you meet these requirements and that all information you provide is accurate and complete.',
+                body: 'You must be at least 18 years of age and a resident of the United Kingdom to use Fixmet as a customer. By using our platform, you confirm that you meet these requirements and that all information you provide is accurate and complete.',
               },
               {
                 title: '4. Booking and payments',
-                body: 'When you submit a job request through Fixmate, you are entering into a contract for services with the individual tradesperson who accepts your job — not with Fixmet Solutions Ltd. Pricing displayed on the platform is an estimate and may vary based on the actual scope of work. Payment terms will be confirmed at the time of booking.',
+                body: 'When you submit a job request through Fixmet, you are entering into a contract for services with the individual tradesperson who accepts your job — not with Fixmet Solutions Ltd. Pricing displayed on the platform is an estimate and may vary based on the actual scope of work. Payment terms will be confirmed at the time of booking.',
               },
               {
                 title: '5. Tradesperson vetting',
-                body: 'Fixmate takes reasonable steps to verify the credentials, insurance, and identity of tradespeople on its platform. However, we cannot guarantee the workmanship or conduct of any individual tradesperson. It is your responsibility to satisfy yourself as to their suitability for any particular job.',
+                body: 'Fixmet takes reasonable steps to verify the credentials, insurance, and identity of tradespeople on its platform. However, we cannot guarantee the workmanship or conduct of any individual tradesperson. It is your responsibility to satisfy yourself as to their suitability for any particular job.',
               },
               {
                 title: '6. User responsibilities',
@@ -78,15 +78,15 @@ export default function TermsPage() {
               },
               {
                 title: '7. Limitation of liability',
-                body: 'To the maximum extent permitted by law, Fixmet Solutions Ltd will not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Fixmate platform. Our total aggregate liability to you shall not exceed the amount paid for the relevant service booking.',
+                body: 'To the maximum extent permitted by law, Fixmet Solutions Ltd will not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Fixmet platform. Our total aggregate liability to you shall not exceed the amount paid for the relevant service booking.',
               },
               {
                 title: '8. Intellectual property',
-                body: 'All intellectual property in the Fixmate platform, including the brand, software, design, and content, belongs to Fixmet Solutions Ltd or its licensors. You may not copy, modify, distribute, or create derivative works from any part of our platform without our prior written consent.',
+                body: 'All intellectual property in the Fixmet platform, including the brand, software, design, and content, belongs to Fixmet Solutions Ltd or its licensors. You may not copy, modify, distribute, or create derivative works from any part of our platform without our prior written consent.',
               },
               {
                 title: '9. Changes to these terms',
-                body: 'We may update these Terms of Service from time to time. We will notify registered users of any material changes by email or through the platform. Your continued use of Fixmate after any changes indicates your acceptance of the revised terms.',
+                body: 'We may update these Terms of Service from time to time. We will notify registered users of any material changes by email or through the platform. Your continued use of Fixmet after any changes indicates your acceptance of the revised terms.',
               },
               {
                 title: '10. Governing law',

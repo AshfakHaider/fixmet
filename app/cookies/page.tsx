@@ -4,8 +4,8 @@ import Footer from '@/components/Footer'
 import { ArrowLeft } from 'lucide-react'
 
 export const metadata = {
-  title: 'Cookie Policy — Fixmate',
-  description: 'Cookie Policy for Fixmet Solutions Ltd, trading as Fixmate.',
+  title: 'Cookie Policy — Fixmet',
+  description: 'Cookie Policy for Fixmet Solutions Ltd, trading as Fixmet.',
 }
 
 export default function CookiesPage() {
@@ -57,7 +57,7 @@ export default function CookiesPage() {
               },
               {
                 title: '2. How we use cookies',
-                body: 'Fixmate uses essential cookies required for the website to function, and analytical cookies to understand how visitors interact with our platform. We do not use advertising or tracking cookies that follow you across third-party websites.',
+                body: 'Fixmet uses essential cookies required for the website to function, and analytical cookies to understand how visitors interact with our platform. We do not use advertising or tracking cookies that follow you across third-party websites.',
               },
               {
                 title: '3. Types of cookies we use',
@@ -65,7 +65,7 @@ export default function CookiesPage() {
               },
               {
                 title: '4. Managing cookies',
-                body: 'You can control and delete cookies through your browser settings. Please note that disabling essential cookies may impact the functionality of the Fixmate platform. For more information on managing cookies, visit www.aboutcookies.org.',
+                body: 'You can control and delete cookies through your browser settings. Please note that disabling essential cookies may impact the functionality of the Fixmet platform. For more information on managing cookies, visit www.aboutcookies.org.',
               },
               {
                 title: '5. Contact',

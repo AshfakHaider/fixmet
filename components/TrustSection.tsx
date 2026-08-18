@@ -15,7 +15,7 @@ const pillars = [
   {
     Icon: BadgeCheck,
     title: 'Fully insured',
-    body: 'Every Fixmate tradesperson carries a minimum of £1,000,000 public liability insurance. Verified at onboarding and renewed annually.',
+    body: 'Every Fixmet tradesperson carries a minimum of £1,000,000 public liability insurance. Verified at onboarding and renewed annually.',
   },
   {
     Icon: Fingerprint,

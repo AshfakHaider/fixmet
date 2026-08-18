@@ -57,7 +57,7 @@ export default function Footer() {
                 marginBottom: "10px",
               }}
             >
-              Fixmate
+              Fixmet
             </Link>
             <p
               style={{
@@ -294,7 +294,7 @@ export default function Footer() {
               color: "var(--text-muted)",
             }}
           >
-            Trading as Fixmate · Company No. 17008216
+            Trading as Fixmet · Company No. 17008216
           </p>
         </div>
       </div>

@@ -175,7 +175,7 @@ export default function Hero() {
             lineHeight: 1.7,
           }}
         >
-          Fixmate connects UK homeowners with verified, insured tradespeople —
+          Fixmet connects UK homeowners with verified, insured tradespeople —
           on demand, day or night. Electricians, plumbers, locksmiths, gas
           engineers and handymen, dispatched to your door.
         </motion.p>

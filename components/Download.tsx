@@ -67,7 +67,7 @@ export default function Download() {
             lineHeight: 1.15,
           }}
         >
-          Fixmate is launching on iOS and Android
+          Fixmet is launching on iOS and Android
         </h2>
 
         {/* Subtext */}

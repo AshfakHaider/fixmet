@@ -17,16 +17,16 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Fixmate — Emergency Home Services, On Demand',
+  title: 'Fixmet — Emergency Home Services, On Demand',
   description:
-    'Fixmate connects UK homeowners with verified, insured tradespeople — electricians, plumbers, locksmiths, gas engineers and handymen — on demand, day or night.',
+    'Fixmet connects UK homeowners with verified, insured tradespeople — electricians, plumbers, locksmiths, gas engineers and handymen — on demand, day or night.',
   keywords:
     'emergency home services, plumber near me, electrician near me, locksmith, gas engineer, on demand tradespeople, UK',
   openGraph: {
-    title: 'Fixmate — Emergency Home Services, On Demand',
+    title: 'Fixmet — Emergency Home Services, On Demand',
     description: 'Verified tradespeople dispatched in minutes across the UK.',
     url: 'https://www.fixmet.co.uk',
-    siteName: 'Fixmate',
+    siteName: 'Fixmet',
     locale: 'en_GB',
     type: 'website',
   },
