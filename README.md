@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# www.fixmet.co.uk
 
-## Getting Started
+The Fixmet website: homepage, how it works, pricing, contractors, about, help,
+contact, legal pages, and a page for every trade and town (e.g. `/plumber/manchester/`).
+Plain HTML and CSS built by `build.mjs`, with no dependencies.
 
-First, run the development server:
+## Build and preview
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+node build.mjs                                   # writes dist/
+python3 -m http.server 4321 --directory dist     # http://localhost:4321
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Hosting
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Vercel builds this repo on every push (`vercel.json`): pushes to `main` go live,
+other branches get a preview link.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## What to edit
 
-## Learn More
+| File | What it holds |
+| --- | --- |
+| `src/data.mjs` | Store links, company details, trades with prices, towns |
+| `src/legal.mjs` | Privacy policy, terms and cookie policy text |
+| `build.mjs` | The page layouts (homepage, help, contractors, etc.) |
+| `src/styles.css` | The design |
+| `src/client.js` | Search, menus, price toggle and scroll motion |
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Prices copy the rate card on the admin Prices page. If you change a rate there,
+change it in `src/data.mjs` too.
