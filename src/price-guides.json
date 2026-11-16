@@ -13,6 +13,10 @@
       "name": "Plumbing",
       "summary": "Most small plumbing jobs cost £75–£150, typically about £100, done in one visit.",
       "rates": "£40–£60 per hour (typical £50), £320–£480 per day. Emergency and out-of-hours work runs £75–£150 per hour, often with a £100–£120 call-out.",
+      "dayRate": {
+        "low": 320,
+        "high": 480
+      },
       "jobs": [
         {
           "key": "fix-leak",
@@ -81,6 +85,10 @@
       "name": "Electrician",
       "summary": "Most small electrical jobs cost £55–£150, typically about £65–£100.",
       "rates": "About £45–£65 per hour (typical £55), around £500 per day. Emergency work is about £90 per hour.",
+      "dayRate": {
+        "low": 400,
+        "high": 550
+      },
       "jobs": [
         {
           "key": "socket-switch",
@@ -160,6 +168,10 @@
       "name": "Cleaning",
       "summary": "A regular clean is about £25 an hour; an end-of-tenancy clean is £180–£415 depending on size.",
       "rates": "£20–£30 per hour (typical £25). Agencies sit at the top of the range.",
+      "dayRate": {
+        "low": 160,
+        "high": 240
+      },
       "jobs": [
         {
           "key": "regular-clean",
@@ -257,6 +269,10 @@
       "name": "Carpets",
       "summary": "Carpet cleaning starts at about £50 a room, often with an £85 minimum per visit. Fitting is about £8–£12 per m² for labour and underlay.",
       "rates": "Fitters charge £20–£35 per hour or £150–£250 per day; cleaning firms £60–£120 per hour.",
+      "dayRate": {
+        "low": 150,
+        "high": 250
+      },
       "jobs": [
         {
           "key": "clean-room",
@@ -332,6 +348,10 @@
       "name": "Painting and decorating",
       "summary": "Painting a medium room costs about £350–£550, typically £450. Decorators charge £250–£350 a day.",
       "rates": "£250–£350 per day (typical £300).",
+      "dayRate": {
+        "low": 250,
+        "high": 350
+      },
       "jobs": [
         {
           "key": "paint-room",
@@ -419,6 +439,10 @@
       "name": "Handyman",
       "summary": "Most handyman jobs take one to four hours and cost £45–£200. Many charge a one-hour minimum.",
       "rates": "About £25–£45 per hour, £180–£300 per day.",
+      "dayRate": {
+        "low": 180,
+        "high": 300
+      },
       "jobs": [
         {
           "key": "hang-pictures",
@@ -505,6 +529,10 @@
       "name": "Carpentry",
       "summary": "Small carpentry repairs cost about £45–£150; hanging a new internal door costs £125–£350 including a basic door.",
       "rates": "About £30–£45 per hour, £200–£300 per day (Fixmet estimate).",
+      "dayRate": {
+        "low": 200,
+        "high": 300
+      },
       "jobs": [
         {
           "key": "ease-door",
@@ -577,6 +605,10 @@
       "name": "Builder",
       "summary": "Builders usually price by the day: about £250–£350 for a builder, £120–£280 for a labourer. Small repairs are £150–£800.",
       "rates": "Builder about £300 per day; bricklayer £250–£350; labourer £120–£280.",
+      "dayRate": {
+        "low": 250,
+        "high": 350
+      },
       "jobs": [
         {
           "key": "patch-plaster",
@@ -651,6 +683,10 @@
       "name": "Roofer",
       "summary": "Small roof repairs usually cost £150–£500. Larger repairs are priced per m² or per metre, and access equipment is extra.",
       "rates": "£280–£360 per day.",
+      "dayRate": {
+        "low": 280,
+        "high": 360
+      },
       "jobs": [
         {
           "key": "slipped-tiles",
@@ -751,6 +787,10 @@
       "name": "Gutters",
       "summary": "Gutter cleaning costs about £50–£120 for a small terraced house, rising to £130–£165 for a detached house.",
       "rates": "£20–£30 per hour, £150–£250 per day.",
+      "dayRate": {
+        "low": 150,
+        "high": 250
+      },
       "jobs": [
         {
           "key": "clean-terrace",
@@ -840,6 +880,10 @@
       "name": "Window cleaning",
       "summary": "Outside window cleaning costs about £30–£40 per visit for most houses.",
       "rates": "About £20–£30 per hour. Regular customers on a 4–8 week round pay less per visit than one-off cleans.",
+      "dayRate": {
+        "low": 160,
+        "high": 240
+      },
       "jobs": [
         {
           "key": "outside-terrace",
@@ -905,6 +949,10 @@
       "name": "Patio care",
       "summary": "Pressure-washing a patio costs about £2–£5 per m², so a typical 20 m² patio is £60–£100 once a minimum charge applies. Cleaning and sealing roughly doubles it.",
       "rates": "£250–£350 per day.",
+      "dayRate": {
+        "low": 250,
+        "high": 350
+      },
       "jobs": [
         {
           "key": "slabs-m2",
@@ -990,6 +1038,10 @@
       "name": "Gardening",
       "summary": "Gardeners charge about £20–£35 an hour, so most one-off tidy-ups cost £50–£200.",
       "rates": "£20–£35 per hour (typical £27.50), £160–£260 per day. Landscape gardeners charge £180–£330 per day.",
+      "dayRate": {
+        "low": 160,
+        "high": 260
+      },
       "jobs": [
         {
           "key": "mow-lawn",
@@ -1072,6 +1124,10 @@
       "name": "Movers and removals",
       "summary": "A local move with two people and a van costs about £50–£80 an hour. A full move is roughly £450 for 1 bedroom up to £1,200 for 4 bedrooms, before packing.",
       "rates": "£50–£80 per hour for two movers and a van; packers about £35 per hour.",
+      "dayRate": {
+        "low": 400,
+        "high": 640
+      },
       "jobs": [
         {
           "key": "few-items",
@@ -1144,6 +1200,10 @@
       "name": "Fire safety",
       "summary": "Fitting a battery smoke alarm costs about £25–£75; mains-wired alarms are £150–£250 each. A fire risk assessment for a small building starts at about £150.",
       "rates": "Mains-wired work is priced at electrician rates (£45–£65 per hour).",
+      "dayRate": {
+        "low": 400,
+        "high": 550
+      },
       "jobs": [
         {
           "key": "battery-alarm",

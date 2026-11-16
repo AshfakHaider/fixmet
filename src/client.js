@@ -246,7 +246,16 @@
         if (!e.isIntersecting) continue;
         links.forEach((a) => a.classList.remove('is-active'));
         const a = map.get(e.target);
-        if (a) { a.classList.add('is-active'); a.scrollIntoView({ block: 'nearest', inline: 'nearest' }); }
+        if (a) {
+          a.classList.add('is-active');
+          // Scroll only the tab bar sideways. scrollIntoView would also move
+          // the page and stop people scrolling down on phones.
+          const bar = a.closest('ul');
+          if (bar && bar.scrollWidth > bar.clientWidth) {
+            const left = a.offsetLeft - (bar.clientWidth - a.offsetWidth) / 2;
+            bar.scrollTo({ left: Math.max(0, left), behavior: reduced ? 'auto' : 'smooth' });
+          }
+        }
       }
     }, { rootMargin: '-35% 0px -60% 0px' });
     map.forEach((_, section) => section && spy.observe(section));

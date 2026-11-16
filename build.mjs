@@ -27,6 +27,9 @@ const V = Date.now().toString(36);
 const round = (n) => Math.round(n);
 const area = (town) => (town?.london ? site.londonPercent / 100 : 1);
 const fromPrice = (trade, town) => round((trade.callout + trade.minHours * trade.rate) * area(town));
+// A full working day (8 hours on site) at Fixmet's rate card, plus the call-out.
+const DAY_HOURS = 8;
+const dayPrice = (trade, town) => round((trade.callout + DAY_HOURS * trade.rate) * area(town));
 
 // Price guides: the same ranges the app's pricing model keeps quotes inside.
 const priceGuides = JSON.parse(readFileSync(join(root, 'src/price-guides.json'), 'utf8'));
@@ -467,6 +470,8 @@ function breakdown(trade, town) {
           <div><dt>Hourly rate</dt><dd>${gbp(rate)}</dd></div>
           <div><dt>Call-out fee</dt><dd>${trade.callout ? gbp(callout) : 'None'}</dd></div>
           <div><dt>Minimum time</dt><dd>${hours(trade.minHours)}</dd></div>
+          <div><dt>Full day (${DAY_HOURS} hours)</dt><dd>${gbp(dayPrice(trade, town))}</dd></div>
+          <div><dt>Typical UK day rate</dt><dd>${gbp(round(trade.guideData.dayRate.low * area(town)))}–${gbp(round(trade.guideData.dayRate.high * area(town)))}</dd></div>
           <div><dt>Instant jobs</dt><dd>+${instantExtra}%</dd></div>
         </dl>
         <p class="formula">${trade.callout ? `${gbp(callout)} call-out + ` : ''}${hours(trade.minHours)} × ${gbp(rate)} = <strong>${gbp(fromPrice(trade, town))}</strong> minimum, plus any parts.</p>
@@ -991,8 +996,8 @@ ${pageHero({ crumbs, eyebrow: 'Pricing', h1: 'Clear prices, <span class="accent"
     <div class="panel"${reveal()}>
       <table class="prices">
         <caption class="sr-only">Fixmet rate card</caption>
-        <thead><tr><th scope="col">Trade</th><th scope="col">Per hour</th><th scope="col">Call-out</th><th scope="col">Minimum</th><th scope="col">From</th></tr></thead>
-        <tbody>${trades.map((t) => `<tr><td><a href="/${t.slug}/">${esc(t.name)}</a>${t.guidePrice ? '<span class="tag">Guide price</span>' : ''}</td><td>${gbp(t.rate)}</td><td>${t.callout ? gbp(t.callout) : 'None'}</td><td>${hours(t.minHours)}</td><td><span class="price-val">${gbp(fromPrice(t, null))}</span></td></tr>`).join('')}</tbody>
+        <thead><tr><th scope="col">Trade</th><th scope="col">Per hour</th><th scope="col">Call-out</th><th scope="col">Minimum</th><th scope="col">Full day</th><th scope="col">From</th></tr></thead>
+        <tbody>${trades.map((t) => `<tr><td><a href="/${t.slug}/">${esc(t.name)}</a>${t.guidePrice ? '<span class="tag">Guide price</span>' : ''}</td><td>${gbp(t.rate)}</td><td>${t.callout ? gbp(t.callout) : 'None'}</td><td>${hours(t.minHours)}</td><td>${gbp(dayPrice(t, null))}</td><td><span class="price-val">${gbp(fromPrice(t, null))}</span></td></tr>`).join('')}</tbody>
       </table>
     </div>
   </div>
