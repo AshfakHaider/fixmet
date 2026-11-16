@@ -554,3 +554,17 @@ body.menu-open { overflow: hidden; }
   .kv div { grid-template-columns: 1fr; gap: 4px; }
   .price-card-price { font-size: 1.7rem; }
 }
+
+/* Price guides: ranges, what's included, what can raise the price */
+.prices td.range { white-space: nowrap; }
+.prices td:nth-child(2), .prices th:nth-child(2) { text-align: right; }
+.prices .unit { color: var(--ink-3); font-size: .8rem; font-weight: 400; }
+.guide-grid { display: grid; gap: 16px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 24px; }
+.guide-grid h3 { display: flex; align-items: center; gap: 8px; font-size: 1.05rem; margin-bottom: 8px; }
+.guide-grid p { color: var(--ink-2); }
+.raisers { margin: 0; padding-left: 1.1em; color: var(--ink-2); display: grid; gap: 6px; }
+@media (max-width: 900px) { .guide-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .prices th, .prices td { padding: 14px 12px; }
+  .prices td.range { white-space: normal; }
+}

@@ -3,6 +3,10 @@
 // Prices mirror the rate card in the admin panel (Prices page). If you change
 // a rate there, change it here too and rebuild, so the pages never promise a
 // price the app won't give. "From" = call-out fee + minimum hours x hourly rate.
+//
+// Job prices come from src/price-guides.json, the same price guides the app's
+// pricing model uses (exported from the backend: npm run export:price-guides).
+// guide: the app category id whose price guide a trade shows.
 
 export const site = {
   name: 'Fixmet',
@@ -32,12 +36,12 @@ export const site = {
 
 /**
  * slug: URL part. name/plural: how people search ("plumber", "plumbers").
- * rate/callout/minHours: the rate card. jobs: common jobs with a fixed
- * price (fixed) or a typical rate-card price for the hours given (hours, parts).
+ * rate/callout/minHours: the rate card. guide: which price guide to show.
  */
 export const trades = [
   {
     slug: 'plumber',
+    guide: 'plumbing',
     name: 'Plumber',
     plural: 'plumbers',
     service: 'plumbing',
@@ -46,13 +50,6 @@ export const trades = [
     minHours: 1,
     intro:
       'Leaks, blocked drains, dripping taps, toilets that won\'t stop running and new taps or showers fitted.',
-    jobs: [
-      { name: 'Fix a leak (pipe, tap or under the sink)', fixed: 95 },
-      { name: 'Unblock a sink, bath or shower drain', fixed: 115 },
-      { name: 'Replace a kitchen or bathroom tap', hours: 1, parts: 0 },
-      { name: 'Fix a running or leaking toilet', hours: 1, parts: 15 },
-      { name: 'Fit a new shower head or mixer', hours: 1.5, parts: 0 },
-    ],
     faqs: [
       [
         'Do your plumbers work on boilers or gas?',
@@ -66,6 +63,7 @@ export const trades = [
   },
   {
     slug: 'electrician',
+    guide: 'electrician',
     name: 'Electrician',
     plural: 'electricians',
     service: 'electrical work',
@@ -74,13 +72,6 @@ export const trades = [
     minHours: 1,
     intro:
       'Sockets, switches and lights that stopped working, new light fittings, ceiling fans and fault finding.',
-    jobs: [
-      { name: 'Replace a socket or light switch', fixed: 75 },
-      { name: 'Repair or fit a ceiling fan', fixed: 95 },
-      { name: 'Fit a new light fitting', hours: 1, parts: 0 },
-      { name: 'Find and fix a tripping fuse', hours: 1.5, parts: 0 },
-      { name: 'Fit an outdoor light', hours: 2, parts: 0 },
-    ],
     faqs: [
       [
         'What about bigger electrical work?',
@@ -90,6 +81,7 @@ export const trades = [
   },
   {
     slug: 'cleaner',
+    guide: 'cleaning',
     name: 'Cleaner',
     plural: 'cleaners',
     service: 'cleaning',
@@ -98,13 +90,6 @@ export const trades = [
     minHours: 2,
     intro:
       'Regular and one-off cleans, deep cleans, end of tenancy cleans, ovens and sofas.',
-    jobs: [
-      { name: 'Sofa cleaning', fixed: 65 },
-      { name: 'Regular clean of a 1-2 bed flat', hours: 2, parts: 0 },
-      { name: 'Deep clean of a 2 bed flat', hours: 5, parts: 10 },
-      { name: 'End of tenancy clean (2 bed)', hours: 7, parts: 15 },
-      { name: 'Oven clean', hours: 2, parts: 5 },
-    ],
     faqs: [
       [
         'Do I need to provide cleaning products?',
@@ -114,6 +99,7 @@ export const trades = [
   },
   {
     slug: 'handyman',
+    guide: 'handy-man',
     name: 'Handyman',
     plural: 'handymen',
     service: 'handyman jobs',
@@ -122,17 +108,11 @@ export const trades = [
     minHours: 2,
     intro:
       'Shelves, TV mounting, flat-pack furniture, curtain poles, small repairs and odd jobs around the home.',
-    jobs: [
-      { name: 'Put up shelves or a mirror', hours: 1, parts: 0 },
-      { name: 'Mount a TV on the wall', hours: 1.5, parts: 0 },
-      { name: 'Assemble flat-pack furniture', hours: 2, parts: 0 },
-      { name: 'Fit curtain poles or blinds', hours: 1.5, parts: 0 },
-      { name: 'Half a day of odd jobs', hours: 4, parts: 0 },
-    ],
     faqs: [],
   },
   {
     slug: 'painter-decorator',
+    guide: 'painting',
     name: 'Painter and decorator',
     plural: 'painters and decorators',
     service: 'painting and decorating',
@@ -141,16 +121,11 @@ export const trades = [
     minHours: 4,
     intro:
       'Walls, ceilings, woodwork, doors and wallpaper, from one room to a whole home.',
-    jobs: [
-      { name: 'Paint a bedroom (walls and ceiling)', hours: 8, parts: 40 },
-      { name: 'Paint a living room', hours: 10, parts: 50 },
-      { name: 'Paint doors and skirting in one room', hours: 4, parts: 15 },
-      { name: 'Hang wallpaper on one wall', hours: 4, parts: 0 },
-    ],
     faqs: [],
   },
   {
     slug: 'carpenter',
+    guide: 'carpenter-joiner',
     name: 'Carpenter',
     plural: 'carpenters',
     service: 'carpentry',
@@ -159,16 +134,11 @@ export const trades = [
     minHours: 2,
     intro:
       'Doors that stick or won\'t close, new internal doors, skirting, shelving, decking repairs and built-in storage.',
-    jobs: [
-      { name: 'Fix a sticking or dropped door', hours: 1, parts: 0 },
-      { name: 'Hang a new internal door', hours: 3, parts: 15 },
-      { name: 'Fit new skirting in a room', hours: 4, parts: 40 },
-      { name: 'Repair a section of decking', hours: 3, parts: 40 },
-    ],
     faqs: [],
   },
   {
     slug: 'gardener',
+    guide: 'gardener-landscaper',
     name: 'Gardener',
     plural: 'gardeners',
     service: 'gardening',
@@ -177,15 +147,11 @@ export const trades = [
     minHours: 2,
     intro:
       'Lawn mowing, hedge trimming, weeding, garden tidy-ups and green waste removal.',
-    jobs: [
-      { name: 'Mow and edge a lawn', hours: 1, parts: 0 },
-      { name: 'Trim hedges', hours: 3, parts: 0 },
-      { name: 'Garden tidy-up', hours: 4, parts: 0 },
-    ],
     faqs: [],
   },
   {
     slug: 'window-cleaner',
+    guide: 'window-cleaner',
     name: 'Window cleaner',
     plural: 'window cleaners',
     service: 'window cleaning',
@@ -193,15 +159,11 @@ export const trades = [
     callout: 0,
     minHours: 1,
     intro: 'Inside and outside window cleaning, frames, sills and conservatories.',
-    jobs: [
-      { name: 'Outside windows of a 3 bed house', hours: 1, parts: 0 },
-      { name: 'Inside and outside, 3 bed house', hours: 2, parts: 0 },
-      { name: 'Conservatory clean', hours: 2.5, parts: 0 },
-    ],
     faqs: [],
   },
   {
     slug: 'gutter-cleaning',
+    guide: 'gutter-fixer',
     name: 'Gutter cleaning and repair',
     plural: 'gutter cleaners',
     person: 'gutter cleaner',
@@ -211,14 +173,11 @@ export const trades = [
     minHours: 2,
     intro:
       'Blocked and overflowing gutters, leaking joints, downpipes and small gutter repairs.',
-    jobs: [
-      { name: 'Clear the gutters of a 3 bed semi', hours: 2, parts: 0 },
-      { name: 'Fix a leaking gutter joint', hours: 2, parts: 15 },
-    ],
     faqs: [],
   },
   {
     slug: 'removals',
+    guide: 'removals',
     name: 'Removals',
     plural: 'removal teams',
     person: 'removal team',
@@ -228,15 +187,11 @@ export const trades = [
     minHours: 2,
     intro:
       'Man and van, small moves, furniture delivery and full house moves with a team.',
-    jobs: [
-      { name: 'Man and van for a few items', hours: 2, parts: 0 },
-      { name: 'Studio or 1 bed flat move', hours: 4, parts: 0 },
-      { name: '2 bed flat move', hours: 6, parts: 0 },
-    ],
     faqs: [],
   },
   {
     slug: 'roofer',
+    guide: 'roofer',
     name: 'Roofer',
     plural: 'roofers',
     service: 'roofing',
@@ -246,15 +201,11 @@ export const trades = [
     guidePrice: true,
     intro:
       'Slipped or missing tiles, leaks, flashing, flat roof repairs and roof inspections.',
-    jobs: [
-      { name: 'Replace a few slipped tiles', hours: 2, parts: 30 },
-      { name: 'Find and repair a roof leak', hours: 4, parts: 40 },
-      { name: 'Repair lead flashing', hours: 3, parts: 50 },
-    ],
     faqs: [],
   },
   {
     slug: 'builder',
+    guide: 'builder',
     name: 'Builder',
     plural: 'builders',
     service: 'building work',
@@ -264,11 +215,6 @@ export const trades = [
     guidePrice: true,
     intro:
       'Brickwork, garden walls, plastering patches, small structural repairs and general building work.',
-    jobs: [
-      { name: 'Repair a section of garden wall', hours: 8, parts: 60 },
-      { name: 'Patch plaster on a wall', hours: 4, parts: 20 },
-      { name: 'Repoint brickwork (small area)', hours: 6, parts: 20 },
-    ],
     faqs: [],
   },
 ];
@@ -296,6 +242,14 @@ export const towns = [
     districts: ['CR0', 'CR2', 'CR7', 'CR8', 'SE25'],
     areas: ['South Croydon', 'Thornton Heath', 'Purley', 'Addiscombe', 'Selhurst'],
     near: ['london'],
+  },
+  {
+    slug: 'cardiff',
+    name: 'Cardiff',
+    region: 'Wales',
+    districts: ['CF3', 'CF5', 'CF10', 'CF11', 'CF14', 'CF23', 'CF24'],
+    areas: ['City Centre', 'Cathays', 'Roath', 'Canton', 'Pontcanna', 'Llandaff', 'Whitchurch', 'Splott'],
+    near: ['bristol'],
   },
   {
     slug: 'manchester',
@@ -343,7 +297,7 @@ export const towns = [
     region: 'South West',
     districts: ['BS1', 'BS3', 'BS6', 'BS7', 'BS8', 'BS16'],
     areas: ['City Centre', 'Clifton', 'Redland', 'Bedminster', 'Bishopston', 'Fishponds'],
-    near: ['reading'],
+    near: ['cardiff', 'reading'],
   },
   {
     slug: 'nottingham',

@@ -1,0 +1,1227 @@
+{
+  "updated": "2026-11-16",
+  "currency": "GBP",
+  "urgentRaiser": {
+    "key": "urgent",
+    "label": "Evening, weekend or emergency work"
+  },
+  "guides": [
+    {
+      "categoryIds": [
+        "plumbing"
+      ],
+      "name": "Plumbing",
+      "summary": "Most small plumbing jobs cost £75–£150, typically about £100, done in one visit.",
+      "rates": "£40–£60 per hour (typical £50), £320–£480 per day. Emergency and out-of-hours work runs £75–£150 per hour, often with a £100–£120 call-out.",
+      "jobs": [
+        {
+          "key": "fix-leak",
+          "name": "Fix a leak (pipe, tap or under the sink)",
+          "low": 75,
+          "typical": 100,
+          "high": 130
+        },
+        {
+          "key": "unblock-drain",
+          "name": "Unblock a sink, bath, shower or toilet",
+          "low": 80,
+          "typical": 110,
+          "high": 200
+        },
+        {
+          "key": "toilet-repair",
+          "name": "Fix a running or leaking toilet",
+          "low": 80,
+          "typical": 110,
+          "high": 150
+        },
+        {
+          "key": "replace-tap",
+          "name": "Replace a kitchen or bathroom tap (labour)",
+          "low": 90,
+          "typical": 120,
+          "high": 160
+        },
+        {
+          "key": "burst-pipe",
+          "name": "Repair a burst pipe",
+          "low": 50,
+          "typical": 150,
+          "high": 200
+        },
+        {
+          "key": "fit-radiator",
+          "name": "Fit a radiator",
+          "low": 150,
+          "typical": 165,
+          "high": 200
+        }
+      ],
+      "included": "Labour, travel within the area, small fittings (washers, olives, PTFE), testing the repair for leaks, taking away old parts.",
+      "notIncluded": "New taps, toilets, showers or radiators unless agreed; re-tiling or re-plastering after access; any gas work (needs a Gas Safe engineer).",
+      "raisers": [
+        {
+          "key": "hidden-pipes",
+          "label": "Pipes hidden behind tiles, boxing or floors"
+        },
+        {
+          "key": "old-pipework",
+          "label": "Old lead, iron or corroded pipework that needs more replacing"
+        },
+        {
+          "key": "premium-parts",
+          "label": "Parts that cost more than standard"
+        }
+      ]
+    },
+    {
+      "categoryIds": [
+        "electrician"
+      ],
+      "name": "Electrician",
+      "summary": "Most small electrical jobs cost £55–£150, typically about £65–£100.",
+      "rates": "About £45–£65 per hour (typical £55), around £500 per day. Emergency work is about £90 per hour.",
+      "jobs": [
+        {
+          "key": "socket-switch",
+          "name": "Replace a socket or light switch",
+          "low": 55,
+          "typical": 65,
+          "high": 80
+        },
+        {
+          "key": "light-fitting",
+          "name": "Replace a light fitting (fitting supplied)",
+          "low": 55,
+          "typical": 65,
+          "high": 90
+        },
+        {
+          "key": "tripping-fuse",
+          "name": "Find and fix a tripping fuse",
+          "low": 60,
+          "typical": 100,
+          "high": 150
+        },
+        {
+          "key": "fan-repair",
+          "name": "Repair a ceiling fan",
+          "low": 60,
+          "typical": 90,
+          "high": 120
+        },
+        {
+          "key": "fan-install",
+          "name": "Install a new ceiling fan (labour)",
+          "low": 230,
+          "typical": 340,
+          "high": 510
+        },
+        {
+          "key": "eicr",
+          "name": "Electrical safety certificate (EICR)",
+          "low": 125,
+          "typical": 210,
+          "high": 300
+        },
+        {
+          "key": "fuse-box",
+          "name": "Replace a fuse box",
+          "low": 450,
+          "typical": 625,
+          "high": 800
+        }
+      ],
+      "included": "Labour, testing after the work, small consumables, and a certificate for notifiable work (Part P).",
+      "notIncluded": "The fitting, fan or fuse box itself; making good plaster or paint after chasing cables.",
+      "raisers": [
+        {
+          "key": "old-wiring",
+          "label": "Old wiring with no earth, or work that fails testing"
+        },
+        {
+          "key": "long-fault-finding",
+          "label": "Fault-finding that takes longer than an hour"
+        },
+        {
+          "key": "new-circuit",
+          "label": "New circuits or cable runs instead of a like-for-like swap"
+        },
+        {
+          "key": "high-ceiling",
+          "label": "High ceilings that need a tower or extra ladder work"
+        }
+      ]
+    },
+    {
+      "categoryIds": [
+        "cleaning"
+      ],
+      "name": "Cleaning",
+      "summary": "A regular clean is about £25 an hour; an end-of-tenancy clean is £180–£415 depending on size.",
+      "rates": "£20–£30 per hour (typical £25). Agencies sit at the top of the range.",
+      "jobs": [
+        {
+          "key": "regular-clean",
+          "name": "Regular clean (3 hours)",
+          "low": 60,
+          "typical": 75,
+          "high": 90
+        },
+        {
+          "key": "deep-clean-2bed",
+          "name": "Deep clean, 2-bed flat",
+          "low": 180,
+          "typical": 240,
+          "high": 300
+        },
+        {
+          "key": "eot-1bed",
+          "name": "End of tenancy, studio or 1-bed",
+          "low": 180,
+          "typical": 200,
+          "high": 220
+        },
+        {
+          "key": "eot-2bed",
+          "name": "End of tenancy, 2-bed",
+          "low": 240,
+          "typical": 260,
+          "high": 280
+        },
+        {
+          "key": "eot-3bed",
+          "name": "End of tenancy, 3-bed",
+          "low": 280,
+          "typical": 300,
+          "high": 320
+        },
+        {
+          "key": "eot-4bed",
+          "name": "End of tenancy, 4–5 bed house",
+          "low": 350,
+          "typical": 370,
+          "high": 415
+        },
+        {
+          "key": "oven-clean",
+          "name": "Oven clean (single or double)",
+          "low": 50,
+          "typical": 50,
+          "high": 70
+        },
+        {
+          "key": "range-cooker",
+          "name": "Range cooker clean",
+          "low": 100,
+          "typical": 125,
+          "high": 150
+        },
+        {
+          "key": "sofa-clean",
+          "name": "Sofa clean (3-seater)",
+          "low": 50,
+          "typical": 70,
+          "high": 100
+        },
+        {
+          "key": "after-builders",
+          "name": "Clean after building work",
+          "low": 30,
+          "typical": 32.5,
+          "high": 35,
+          "unit": "per hour"
+        }
+      ],
+      "included": "Cleaning products and equipment, kitchen surfaces and appliances outside, bathrooms, dusting, hoovering and mopping.",
+      "notIncluded": "Outside windows, carpet shampooing, laundry and ironing, taking away rubbish.",
+      "raisers": [
+        {
+          "key": "poor-condition",
+          "label": "Heavy grease, limescale, mould or a home left in poor condition"
+        },
+        {
+          "key": "pets",
+          "label": "Pets and pet hair"
+        },
+        {
+          "key": "extras",
+          "label": "Extra rooms, inside fridges and cupboards, or balconies"
+        }
+      ]
+    },
+    {
+      "categoryIds": [
+        "carpet-fitter-cleaner"
+      ],
+      "name": "Carpets",
+      "summary": "Carpet cleaning starts at about £50 a room, often with an £85 minimum per visit. Fitting is about £8–£12 per m² for labour and underlay.",
+      "rates": "Fitters charge £20–£35 per hour or £150–£250 per day; cleaning firms £60–£120 per hour.",
+      "jobs": [
+        {
+          "key": "clean-room",
+          "name": "Clean a small room (4 m × 4 m)",
+          "low": 40,
+          "typical": 50,
+          "high": 75
+        },
+        {
+          "key": "clean-stairs",
+          "name": "Clean stairs and landing",
+          "low": 70,
+          "typical": 85,
+          "high": 100
+        },
+        {
+          "key": "stain-protector",
+          "name": "Stain protector",
+          "low": 15,
+          "typical": 15,
+          "high": 15,
+          "unit": "per room"
+        },
+        {
+          "key": "fit-per-m2",
+          "name": "Fit carpet with underlay (labour and underlay)",
+          "low": 8,
+          "typical": 10,
+          "high": 12,
+          "unit": "per m²"
+        },
+        {
+          "key": "fit-stairs",
+          "name": "Fit a straight staircase",
+          "low": 150,
+          "typical": 200,
+          "high": 250
+        },
+        {
+          "key": "carpet-bedroom",
+          "name": "Carpet a standard bedroom (carpet supplied by fitter)",
+          "low": 550,
+          "typical": 600,
+          "high": 650
+        }
+      ],
+      "included": "Cleaning: pre-treatment of normal marks and drying advice. Fitting: gripper, fitting, trimming and taking away offcuts.",
+      "notIncluded": "The carpet itself (unless quoted), lifting and disposing of old carpet, moving heavy furniture, floor levelling.",
+      "raisers": [
+        {
+          "key": "heavy-soiling",
+          "label": "Old stains, pet urine or heavy soiling"
+        },
+        {
+          "key": "winding-stairs",
+          "label": "Winding or open-plan staircases"
+        },
+        {
+          "key": "uneven-floor",
+          "label": "Uneven floors that need levelling or new gripper"
+        },
+        {
+          "key": "pattern-match",
+          "label": "Patterned carpet that needs matching"
+        }
+      ]
+    },
+    {
+      "categoryIds": [
+        "painting",
+        "decorator"
+      ],
+      "name": "Painting and decorating",
+      "summary": "Painting a medium room costs about £350–£550, typically £450. Decorators charge £250–£350 a day.",
+      "rates": "£250–£350 per day (typical £300).",
+      "jobs": [
+        {
+          "key": "paint-room",
+          "name": "Paint one room, walls and ceiling",
+          "low": 350,
+          "typical": 450,
+          "high": 550
+        },
+        {
+          "key": "paint-walls-m2",
+          "name": "Paint walls",
+          "low": 10,
+          "typical": 15,
+          "high": 20,
+          "unit": "per m²"
+        },
+        {
+          "key": "paint-door",
+          "name": "Paint a door, both sides",
+          "low": 80,
+          "typical": 90,
+          "high": 100
+        },
+        {
+          "key": "paint-woodwork-room",
+          "name": "Paint skirting and a door in one room",
+          "low": 80,
+          "typical": 95,
+          "high": 120
+        },
+        {
+          "key": "wallpaper-room",
+          "name": "Wallpaper a room (labour)",
+          "low": 350,
+          "typical": 450,
+          "high": 500
+        },
+        {
+          "key": "hall-stairs",
+          "name": "Hall, stairs and landing",
+          "low": 1450,
+          "typical": 1600,
+          "high": 1750
+        },
+        {
+          "key": "flat-2bed",
+          "name": "Whole 2-bed flat",
+          "low": 1500,
+          "typical": 2000,
+          "high": 2500
+        },
+        {
+          "key": "exterior-semi",
+          "name": "Outside of a 3-bed semi",
+          "low": 1100,
+          "typical": 1300,
+          "high": 1500
+        }
+      ],
+      "included": "Preparation (filling small cracks, sanding, masking, dust sheets), two coats, clearing up.",
+      "notIncluded": "Paint and wallpaper unless agreed, stripping old wallpaper, plaster repairs bigger than small cracks, moving heavy furniture.",
+      "raisers": [
+        {
+          "key": "high-ceilings",
+          "label": "High ceilings and stairwells that need a platform"
+        },
+        {
+          "key": "dark-to-light",
+          "label": "Going from a dark colour to a light one (extra coats)"
+        },
+        {
+          "key": "strip-or-damp",
+          "label": "Stripping wallpaper or treating damp and stains first"
+        },
+        {
+          "key": "detailed-woodwork",
+          "label": "Lots of woodwork, spindles or detailed mouldings"
+        }
+      ]
+    },
+    {
+      "categoryIds": [
+        "handy-man"
+      ],
+      "name": "Handyman",
+      "summary": "Most handyman jobs take one to four hours and cost £45–£200. Many charge a one-hour minimum.",
+      "rates": "About £25–£45 per hour, £180–£300 per day.",
+      "jobs": [
+        {
+          "key": "hang-pictures",
+          "name": "Hang pictures or a mirror",
+          "low": 40,
+          "typical": 45,
+          "high": 60
+        },
+        {
+          "key": "curtain-pole",
+          "name": "Put up a curtain pole or blind",
+          "low": 40,
+          "typical": 45,
+          "high": 60
+        },
+        {
+          "key": "minor-fix",
+          "name": "Minor plumbing or electrical fix",
+          "low": 50,
+          "typical": 60,
+          "high": 70
+        },
+        {
+          "key": "tv-mount",
+          "name": "Mount a TV on the wall (bracket supplied)",
+          "low": 60,
+          "typical": 80,
+          "high": 120
+        },
+        {
+          "key": "flat-pack",
+          "name": "Assemble flat-pack furniture",
+          "low": 60,
+          "typical": 90,
+          "high": 120
+        },
+        {
+          "key": "shelves-few",
+          "name": "Put up shelves (a few)",
+          "low": 45,
+          "typical": 60,
+          "high": 90
+        },
+        {
+          "key": "shelves-room",
+          "name": "Put up 8 shelves in a living room",
+          "low": 150,
+          "typical": 200,
+          "high": 250
+        },
+        {
+          "key": "half-day",
+          "name": "Half a day of odd jobs",
+          "low": 110,
+          "typical": 135,
+          "high": 170
+        }
+      ],
+      "included": "Labour, standard screws, plugs and fixings, tidying up.",
+      "notIncluded": "The item being fitted (TV bracket, shelves, blinds), work that legally needs a qualified electrician or Gas Safe engineer.",
+      "raisers": [
+        {
+          "key": "hard-walls",
+          "label": "Hard or hollow walls that need special fixings"
+        },
+        {
+          "key": "large-flat-pack",
+          "label": "Large or complex flat-pack (wardrobes, beds with storage)"
+        },
+        {
+          "key": "work-at-height",
+          "label": "Work at height"
+        },
+        {
+          "key": "parking",
+          "label": "Parking charges or congestion zones"
+        }
+      ]
+    },
+    {
+      "categoryIds": [
+        "carpenter-joiner"
+      ],
+      "name": "Carpentry",
+      "summary": "Small carpentry repairs cost about £45–£150; hanging a new internal door costs £125–£350 including a basic door.",
+      "rates": "About £30–£45 per hour, £200–£300 per day (Fixmet estimate).",
+      "jobs": [
+        {
+          "key": "ease-door",
+          "name": "Ease a sticking or dropped door",
+          "low": 45,
+          "typical": 60,
+          "high": 90
+        },
+        {
+          "key": "hang-door-softwood",
+          "name": "Hang an internal door (softwood door included)",
+          "low": 125,
+          "typical": 200,
+          "high": 350
+        },
+        {
+          "key": "hang-door-hardwood",
+          "name": "Hang an internal door (hardwood door included)",
+          "low": 200,
+          "typical": 300,
+          "high": 400
+        },
+        {
+          "key": "skirting-room",
+          "name": "Fit new skirting in one room",
+          "low": 150,
+          "typical": 220,
+          "high": 300
+        },
+        {
+          "key": "decking-repair",
+          "name": "Repair a section of decking",
+          "low": 150,
+          "typical": 230,
+          "high": 350
+        },
+        {
+          "key": "external-door",
+          "name": "Fit an external door",
+          "low": 350,
+          "typical": 420,
+          "high": 500
+        }
+      ],
+      "included": "Labour, fixings, hinges and handles reused, clearing offcuts.",
+      "notIncluded": "New doors, timber or ironmongery unless quoted; painting or staining afterwards.",
+      "raisers": [
+        {
+          "key": "out-of-square",
+          "label": "Out-of-square frames or uneven floors"
+        },
+        {
+          "key": "fire-door",
+          "label": "Fire doors, which need certified fitting"
+        },
+        {
+          "key": "rotten-timber",
+          "label": "Rotten timber found once work starts"
+        },
+        {
+          "key": "bespoke-size",
+          "label": "Bespoke sizes that need cutting or building to measure"
+        }
+      ]
+    },
+    {
+      "categoryIds": [
+        "builder"
+      ],
+      "name": "Builder",
+      "summary": "Builders usually price by the day: about £250–£350 for a builder, £120–£280 for a labourer. Small repairs are £150–£800.",
+      "rates": "Builder about £300 per day; bricklayer £250–£350; labourer £120–£280.",
+      "jobs": [
+        {
+          "key": "patch-plaster",
+          "name": "Patch plaster on a wall (small area)",
+          "low": 150,
+          "typical": 220,
+          "high": 300
+        },
+        {
+          "key": "repoint-brick-m2",
+          "name": "Repoint brickwork",
+          "low": 50,
+          "typical": 55,
+          "high": 60,
+          "unit": "per m²"
+        },
+        {
+          "key": "repoint-stone-m2",
+          "name": "Repoint stonework",
+          "low": 60,
+          "typical": 80,
+          "high": 100,
+          "unit": "per m²"
+        },
+        {
+          "key": "garden-wall",
+          "name": "Repair a section of garden wall",
+          "low": 300,
+          "typical": 500,
+          "high": 800
+        },
+        {
+          "key": "repoint-chimney",
+          "name": "Repoint a chimney",
+          "low": 500,
+          "typical": 750,
+          "high": 1000
+        },
+        {
+          "key": "repoint-front",
+          "name": "Repoint the front of a house",
+          "low": 1500,
+          "typical": 1750,
+          "high": 2200
+        }
+      ],
+      "included": "Labour, sand and cement for small repairs, clearing the work area.",
+      "notIncluded": "Scaffolding (£15–£25 per m²), skip hire, matching bricks or stone, building control fees.",
+      "raisers": [
+        {
+          "key": "scaffolding",
+          "label": "Scaffolding or access towers"
+        },
+        {
+          "key": "raking-out",
+          "label": "Raking out old mortar before repointing"
+        },
+        {
+          "key": "period-bricks",
+          "label": "Matching reclaimed or period bricks"
+        },
+        {
+          "key": "hidden-problems",
+          "label": "Hidden problems such as failed foundations or damp"
+        }
+      ]
+    },
+    {
+      "categoryIds": [
+        "roofer"
+      ],
+      "name": "Roofer",
+      "summary": "Small roof repairs usually cost £150–£500. Larger repairs are priced per m² or per metre, and access equipment is extra.",
+      "rates": "£280–£360 per day.",
+      "jobs": [
+        {
+          "key": "slipped-tiles",
+          "name": "Replace a few slipped tiles (ladder access)",
+          "low": 150,
+          "typical": 230,
+          "high": 350
+        },
+        {
+          "key": "roof-leak",
+          "name": "Find and repair a roof leak",
+          "low": 200,
+          "typical": 320,
+          "high": 500
+        },
+        {
+          "key": "concrete-tiles-m2",
+          "name": "Repair concrete tiles",
+          "low": 90,
+          "typical": 105,
+          "high": 120,
+          "unit": "per m²"
+        },
+        {
+          "key": "clay-tiles-m2",
+          "name": "Repair clay tiles",
+          "low": 110,
+          "typical": 135,
+          "high": 160,
+          "unit": "per m²"
+        },
+        {
+          "key": "slate-m2",
+          "name": "Repair natural slate",
+          "low": 150,
+          "typical": 185,
+          "high": 220,
+          "unit": "per m²"
+        },
+        {
+          "key": "flat-roof-m2",
+          "name": "Patch a flat roof (felt, rubber or GRP)",
+          "low": 100,
+          "typical": 140,
+          "high": 180,
+          "unit": "per m²"
+        },
+        {
+          "key": "lead-flashing-m",
+          "name": "Replace lead flashing",
+          "low": 50,
+          "typical": 60,
+          "high": 70,
+          "unit": "per metre"
+        },
+        {
+          "key": "stepped-flashing-m",
+          "name": "Replace stepped lead flashing",
+          "low": 80,
+          "typical": 100,
+          "high": 120,
+          "unit": "per metre"
+        },
+        {
+          "key": "dry-ridge-m",
+          "name": "Dry ridge system",
+          "low": 50,
+          "typical": 60,
+          "high": 70,
+          "unit": "per metre"
+        }
+      ],
+      "included": "Labour, matching tiles or slates for small areas, fixings, taking away broken tiles.",
+      "notIncluded": "Scaffolding or access towers, full strip-and-replace, VAT, internal repairs to ceilings.",
+      "raisers": [
+        {
+          "key": "scaffolding",
+          "label": "Scaffolding or a cherry picker"
+        },
+        {
+          "key": "steep-high-roof",
+          "label": "Steep or high roofs, and three-storey houses"
+        },
+        {
+          "key": "rotten-battens",
+          "label": "Rotten battens or felt found under the tiles"
+        },
+        {
+          "key": "rare-tiles",
+          "label": "Rare or reclaimed tiles that are hard to match"
+        }
+      ]
+    },
+    {
+      "categoryIds": [
+        "gutter-fixer"
+      ],
+      "name": "Gutters",
+      "summary": "Gutter cleaning costs about £50–£120 for a small terraced house, rising to £130–£165 for a detached house.",
+      "rates": "£20–£30 per hour, £150–£250 per day.",
+      "jobs": [
+        {
+          "key": "clean-terrace",
+          "name": "Clean gutters, small terraced house (about 5 m)",
+          "low": 50,
+          "typical": 85,
+          "high": 120
+        },
+        {
+          "key": "clean-semi",
+          "name": "Clean gutters, semi-detached (about 15 m)",
+          "low": 100,
+          "typical": 125,
+          "high": 150
+        },
+        {
+          "key": "clean-detached",
+          "name": "Clean gutters, detached 4-bed (about 20 m)",
+          "low": 130,
+          "typical": 150,
+          "high": 165
+        },
+        {
+          "key": "clean-three-storey",
+          "name": "Clean gutters, three-storey (gutter vacuum)",
+          "low": 165,
+          "typical": 230,
+          "high": 300
+        },
+        {
+          "key": "repair-upvc-m",
+          "name": "Repair uPVC guttering",
+          "low": 30,
+          "typical": 30,
+          "high": 30,
+          "unit": "per metre"
+        },
+        {
+          "key": "repair-cast-iron-m",
+          "name": "Repair cast-iron guttering",
+          "low": 60,
+          "typical": 65,
+          "high": 70,
+          "unit": "per metre"
+        },
+        {
+          "key": "gutter-joint",
+          "name": "Replace a leaking gutter joint",
+          "low": 50,
+          "typical": 85,
+          "high": 125
+        },
+        {
+          "key": "downpipe-m",
+          "name": "Replace uPVC downpipe",
+          "low": 25,
+          "typical": 25,
+          "high": 25,
+          "unit": "per metre"
+        }
+      ],
+      "included": "Removing leaves, moss and debris; clearing downpipes; flushing to check flow; taking waste away; pointing out visible damage.",
+      "notIncluded": "Repairs found during cleaning, new parts, scaffolding or a cherry picker for complex jobs.",
+      "raisers": [
+        {
+          "key": "heavy-blockage",
+          "label": "Heavily blocked gutters or plants growing in them"
+        },
+        {
+          "key": "access",
+          "label": "Height, conservatories or extensions in the way"
+        },
+        {
+          "key": "blocked-downpipes",
+          "label": "Blocked downpipes that need rodding"
+        },
+        {
+          "key": "cast-iron",
+          "label": "Cast-iron gutters"
+        }
+      ]
+    },
+    {
+      "categoryIds": [
+        "window-cleaner"
+      ],
+      "name": "Window cleaning",
+      "summary": "Outside window cleaning costs about £30–£40 per visit for most houses.",
+      "rates": "About £20–£30 per hour. Regular customers on a 4–8 week round pay less per visit than one-off cleans.",
+      "jobs": [
+        {
+          "key": "outside-terrace",
+          "name": "Outside only, terraced house or bungalow",
+          "low": 25,
+          "typical": 30,
+          "high": 35
+        },
+        {
+          "key": "outside-semi",
+          "name": "Outside only, semi-detached",
+          "low": 30,
+          "typical": 35,
+          "high": 40
+        },
+        {
+          "key": "outside-detached",
+          "name": "Outside only, detached",
+          "low": 35,
+          "typical": 40,
+          "high": 50
+        },
+        {
+          "key": "inside-outside-3bed",
+          "name": "Inside and outside, 3-bed house",
+          "low": 50,
+          "typical": 65,
+          "high": 80
+        },
+        {
+          "key": "conservatory",
+          "name": "Conservatory clean",
+          "low": 60,
+          "typical": 85,
+          "high": 120
+        }
+      ],
+      "included": "Glass, frames and sills on the outside; pure-water pole or ladder.",
+      "notIncluded": "Inside windows unless booked, conservatory roofs, gutters and fascias.",
+      "raisers": [
+        {
+          "key": "one-off",
+          "label": "A one-off clean instead of a regular round"
+        },
+        {
+          "key": "high-windows",
+          "label": "Windows above second floor, or no rear access"
+        },
+        {
+          "key": "very-dirty",
+          "label": "Very dirty glass after building work (paint, cement)"
+        },
+        {
+          "key": "small-panes",
+          "label": "Lots of small panes such as Georgian or leaded windows"
+        }
+      ]
+    },
+    {
+      "categoryIds": [
+        "patio-cleaner"
+      ],
+      "name": "Patio care",
+      "summary": "Pressure-washing a patio costs about £2–£5 per m², so a typical 20 m² patio is £60–£100 once a minimum charge applies. Cleaning and sealing roughly doubles it.",
+      "rates": "£250–£350 per day.",
+      "jobs": [
+        {
+          "key": "slabs-m2",
+          "name": "Clean patio slabs",
+          "low": 2,
+          "typical": 3,
+          "high": 4.5,
+          "unit": "per m²"
+        },
+        {
+          "key": "block-paving-m2",
+          "name": "Clean block paving",
+          "low": 2.5,
+          "typical": 3.5,
+          "high": 5.25,
+          "unit": "per m²"
+        },
+        {
+          "key": "decking-m2",
+          "name": "Clean timber decking",
+          "low": 3,
+          "typical": 4.5,
+          "high": 6,
+          "unit": "per m²"
+        },
+        {
+          "key": "seal-slabs-m2",
+          "name": "Clean and seal patio slabs",
+          "low": 4,
+          "typical": 6.5,
+          "high": 9,
+          "unit": "per m²"
+        },
+        {
+          "key": "seal-block-m2",
+          "name": "Clean and seal block paving",
+          "low": 4,
+          "typical": 7,
+          "high": 10,
+          "unit": "per m²"
+        },
+        {
+          "key": "repoint-patio-m2",
+          "name": "Re-point a patio",
+          "low": 10,
+          "typical": 15,
+          "high": 20,
+          "unit": "per m²"
+        },
+        {
+          "key": "patio-20m2",
+          "name": "Typical 20 m² patio clean",
+          "low": 60,
+          "typical": 80,
+          "high": 100
+        }
+      ],
+      "included": "Pressure washing, moss and weed removal from joints, rinsing away debris.",
+      "notIncluded": "Sealant (unless booked), re-sanding block paving, replacing cracked slabs, water if the customer has no outside tap.",
+      "raisers": [
+        {
+          "key": "heavy-moss-oil",
+          "label": "Heavy moss, algae or oil stains needing chemical treatment"
+        },
+        {
+          "key": "re-sanding",
+          "label": "Re-sanding block paving after washing"
+        },
+        {
+          "key": "no-tap",
+          "label": "No outside tap or no drainage"
+        },
+        {
+          "key": "steps-walls",
+          "label": "Steps, walls and edging on top of the flat area"
+        }
+      ]
+    },
+    {
+      "categoryIds": [
+        "gardener-landscaper"
+      ],
+      "name": "Gardening",
+      "summary": "Gardeners charge about £20–£35 an hour, so most one-off tidy-ups cost £50–£200.",
+      "rates": "£20–£35 per hour (typical £27.50), £160–£260 per day. Landscape gardeners charge £180–£330 per day.",
+      "jobs": [
+        {
+          "key": "mow-lawn",
+          "name": "Mow and edge a small lawn",
+          "low": 25,
+          "typical": 35,
+          "high": 45
+        },
+        {
+          "key": "hedge-trim-hour",
+          "name": "Trim hedges (team with tools)",
+          "low": 60,
+          "typical": 90,
+          "high": 120,
+          "unit": "per hour"
+        },
+        {
+          "key": "hedge-height-hour",
+          "name": "Trim hedges at height",
+          "low": 100,
+          "typical": 120,
+          "high": 140,
+          "unit": "per hour"
+        },
+        {
+          "key": "garden-tidy",
+          "name": "Garden tidy-up (4 hours)",
+          "low": 80,
+          "typical": 110,
+          "high": 140
+        },
+        {
+          "key": "overgrown",
+          "name": "Clear an overgrown garden",
+          "low": 70,
+          "typical": 185,
+          "high": 300
+        },
+        {
+          "key": "hedge-remove-small",
+          "name": "Remove a small hedge (2–4 m)",
+          "low": 100,
+          "typical": 175,
+          "high": 250
+        },
+        {
+          "key": "hedge-remove-large",
+          "name": "Remove a large hedge",
+          "low": 250,
+          "typical": 325,
+          "high": 400
+        }
+      ],
+      "included": "Labour, the gardener's own mower, trimmers and hand tools, bagging cuttings.",
+      "notIncluded": "Taking green waste away (often £60+ per load), plants, turf, compost and skip hire.",
+      "raisers": [
+        {
+          "key": "very-overgrown",
+          "label": "Overgrown gardens left for a season or more"
+        },
+        {
+          "key": "waste-removal",
+          "label": "Green waste removal and tip fees"
+        },
+        {
+          "key": "tall-hedges",
+          "label": "Tall hedges that need platforms or climbing gear"
+        },
+        {
+          "key": "no-side-access",
+          "label": "No side access, so everything goes through the house"
+        }
+      ]
+    },
+    {
+      "categoryIds": [
+        "movers-packers",
+        "removals"
+      ],
+      "name": "Movers and removals",
+      "summary": "A local move with two people and a van costs about £50–£80 an hour. A full move is roughly £450 for 1 bedroom up to £1,200 for 4 bedrooms, before packing.",
+      "rates": "£50–£80 per hour for two movers and a van; packers about £35 per hour.",
+      "jobs": [
+        {
+          "key": "few-items",
+          "name": "Man and van, a few items (2 hours)",
+          "low": 100,
+          "typical": 130,
+          "high": 160
+        },
+        {
+          "key": "move-1bed",
+          "name": "1-bed move",
+          "low": 350,
+          "typical": 450,
+          "high": 550
+        },
+        {
+          "key": "move-2bed",
+          "name": "2-bed move",
+          "low": 500,
+          "typical": 600,
+          "high": 700
+        },
+        {
+          "key": "move-3bed",
+          "name": "3-bed move",
+          "low": 750,
+          "typical": 900,
+          "high": 1050
+        },
+        {
+          "key": "move-4bed",
+          "name": "4-bed move",
+          "low": 1000,
+          "typical": 1200,
+          "high": 1400
+        },
+        {
+          "key": "packing",
+          "name": "Packing service (1–4 bed)",
+          "low": 250,
+          "typical": 400,
+          "high": 600
+        }
+      ],
+      "included": "Loading, transport, unloading into the right rooms, blankets and straps, basic goods-in-transit cover.",
+      "notIncluded": "Packing and boxes, dismantling furniture, storage, parking permits, long-distance fuel.",
+      "raisers": [
+        {
+          "key": "stairs-long-carry",
+          "label": "Stairs with no lift, or long carries from the van"
+        },
+        {
+          "key": "heavy-items",
+          "label": "Pianos, safes and other heavy items"
+        },
+        {
+          "key": "distance-charges",
+          "label": "Long distances or congestion and ULEZ charges"
+        },
+        {
+          "key": "peak-dates",
+          "label": "Weekends, bank holidays and month-end dates"
+        }
+      ]
+    },
+    {
+      "categoryIds": [
+        "fire"
+      ],
+      "name": "Fire safety",
+      "summary": "Fitting a battery smoke alarm costs about £25–£75; mains-wired alarms are £150–£250 each. A fire risk assessment for a small building starts at about £150.",
+      "rates": "Mains-wired work is priced at electrician rates (£45–£65 per hour).",
+      "jobs": [
+        {
+          "key": "battery-alarm",
+          "name": "Fit a battery smoke or heat alarm",
+          "low": 25,
+          "typical": 50,
+          "high": 75
+        },
+        {
+          "key": "mains-alarm",
+          "name": "Fit a mains-wired alarm",
+          "low": 150,
+          "typical": 200,
+          "high": 250
+        },
+        {
+          "key": "app-alarm",
+          "name": "Fit an app-connected alarm",
+          "low": 175,
+          "typical": 250,
+          "high": 300
+        },
+        {
+          "key": "call-point",
+          "name": "Manual call point (break glass)",
+          "low": 100,
+          "typical": 150,
+          "high": 200
+        },
+        {
+          "key": "door-release",
+          "name": "Magnetic door release",
+          "low": 175,
+          "typical": 200,
+          "high": 250
+        },
+        {
+          "key": "fra-small",
+          "name": "Fire risk assessment, small building",
+          "low": 149,
+          "typical": 324,
+          "high": 499
+        },
+        {
+          "key": "fra-medium",
+          "name": "Fire risk assessment, medium building",
+          "low": 249,
+          "typical": 424,
+          "high": 599
+        },
+        {
+          "key": "grade-a-system",
+          "name": "Grade A alarm system (HMO or block)",
+          "low": 1750,
+          "typical": 2500,
+          "high": 3000
+        }
+      ],
+      "included": "Fitting, testing, and a certificate for mains-wired and Grade A systems.",
+      "notIncluded": "The alarms unless quoted, making good after cabling, annual servicing.",
+      "raisers": [
+        {
+          "key": "no-nearby-circuit",
+          "label": "Mains wiring where there is no nearby circuit"
+        },
+        {
+          "key": "full-system",
+          "label": "HMOs, flats and commercial buildings that need a full system"
+        },
+        {
+          "key": "interlinking",
+          "label": "Interlinking several alarms"
+        },
+        {
+          "key": "urgent-report",
+          "label": "Reports needed urgently for a letting or insurance deadline"
+        }
+      ]
+    }
+  ]
+}

@@ -27,11 +27,23 @@ const V = Date.now().toString(36);
 const round = (n) => Math.round(n);
 const area = (town) => (town?.london ? site.londonPercent / 100 : 1);
 const fromPrice = (trade, town) => round((trade.callout + trade.minHours * trade.rate) * area(town));
-const jobPrice = (trade, job, town) => {
-  const base = job.fixed ? job.fixed : trade.callout + Math.max(trade.minHours, job.hours) * trade.rate + (job.parts ?? 0);
-  return round(base * area(town));
+
+// Price guides: the same ranges the app's pricing model keeps quotes inside.
+const priceGuides = JSON.parse(readFileSync(join(root, 'src/price-guides.json'), 'utf8'));
+for (const trade of trades) {
+  trade.guideData = priceGuides.guides.find((g) => g.categoryIds.includes(trade.guide));
+  if (!trade.guideData) throw new Error(`No price guide for ${trade.slug} (${trade.guide})`);
+  // Jobs priced per job (not per m² or per hour) feed the cards and schema.
+  trade.jobs = trade.guideData.jobs.filter((j) => !j.unit);
+}
+// Small prices (per m²) keep their pence; job prices round to whole pounds.
+const scale = (n, town) => {
+  const v = n * area(town);
+  return v < 20 ? Math.round(v * 100) / 100 : round(v);
 };
-const gbp = (n) => `£${n.toLocaleString('en-GB')}`;
+const jobPrice = (trade, job, town) => scale(job.typical, town);
+const gbp = (n) => `£${n.toLocaleString('en-GB', { maximumFractionDigits: 2, minimumFractionDigits: Number.isInteger(n) ? 0 : 2 })}`;
+const GUIDES_MONTH = new Date(`${priceGuides.updated}T00:00:00Z`).toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' });
 const hours = (h) => (h === 1 ? '1 hour' : `${h} hours`);
 const instantExtra = site.instantPercent - 100;
 
@@ -429,11 +441,17 @@ function priceTable(trade, town, id) {
         </div>
         <table class="prices" id="${id}">
           <caption class="sr-only">${esc(trade.name)} prices${town ? ` in ${esc(town.name)}` : ''}</caption>
-          <thead><tr><th scope="col">Job</th><th scope="col">Price</th></tr></thead>
-          <tbody aria-live="polite">${trade.jobs
+          <thead><tr><th scope="col">Job</th><th scope="col">Price range</th><th scope="col">Typical</th></tr></thead>
+          <tbody aria-live="polite">${trade.guideData.jobs
             .map((job) => {
-              const p = jobPrice(trade, job, town);
-              return `<tr><td>${esc(job.name)}${job.fixed ? '<span class="tag">Fixed</span>' : ''}</td><td><span class="price-val" data-base="${p}">${gbp(p)}</span></td></tr>`;
+              const lo = scale(job.low, town);
+              const hi = scale(job.high, town);
+              const typ = scale(job.typical, town);
+              const unit = job.unit ? ` <small class="unit">${esc(job.unit)}</small>` : '';
+              const range = lo === hi
+                ? `<span class="price-val" data-base="${lo}">${gbp(lo)}</span>`
+                : `<span class="price-val" data-base="${lo}">${gbp(lo)}</span>–<span class="price-val" data-base="${hi}">${gbp(hi)}</span>`;
+              return `<tr><td>${esc(job.name)}</td><td class="range">${range}${unit}</td><td><span class="price-val" data-base="${typ}">${gbp(typ)}</span>${unit}</td></tr>`;
             })
             .join('')}</tbody>
         </table>
@@ -453,6 +471,16 @@ function breakdown(trade, town) {
         </dl>
         <p class="formula">${trade.callout ? `${gbp(callout)} call-out + ` : ''}${hours(trade.minHours)} × ${gbp(rate)} = <strong>${gbp(fromPrice(trade, town))}</strong> minimum, plus any parts.</p>
       </div>`;
+}
+
+function guideDetails(trade) {
+  const g = trade.guideData;
+  return `<div class="guide-grid">
+      <div class="card"${reveal()}><h3>${icon('check', 20)} What's included</h3><p>${esc(g.included)}</p></div>
+      <div class="card"${reveal(1)}><h3>Not included</h3><p>${esc(g.notIncluded)}</p></div>
+      <div class="card"${reveal(2)}><h3>What can raise the price</h3><ul class="raisers">${[{ label: priceGuides.urgentRaiser.label }, ...g.raisers].map((r) => `<li>${esc(r.label)}</li>`).join('')}</ul></div>
+    </div>
+    <p class="note">${esc(g.rates)} Ranges are typical UK prices before VAT (checked ${GUIDES_MONTH}). Your price in the app always sits inside the range for your area, unless your photos show one of the reasons above; then you're told why. If the contractor finds more work on the day, they can suggest a new price, and you only pay it if you approve it in the app.</p>`;
 }
 
 function commonFaqs(trade, town) {
@@ -526,7 +554,7 @@ function tradeTownPage(trade, town) {
       name: town.name,
       containedInPlace: { '@type': 'AdministrativeArea', name: town.region },
     },
-    offers: { '@type': 'AggregateOffer', priceCurrency: 'GBP', lowPrice: from, highPrice: Math.max(...trade.jobs.map((j) => jobPrice(trade, j, town))), offerCount: trade.jobs.length },
+    offers: { '@type': 'AggregateOffer', priceCurrency: 'GBP', lowPrice: Math.min(from, ...trade.jobs.map((j) => scale(j.low, town))), highPrice: Math.max(...trade.jobs.map((j) => scale(j.high, town))), offerCount: trade.jobs.length },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: `${trade.name} prices in ${town.name}`,
@@ -578,13 +606,14 @@ ${trustBar()}
       <div style="display:grid;gap:14px">
         <span class="eyebrow">Prices · checked ${MONTH}</span>
         <h2 id="prices-h">${esc(trade.name)} prices in ${esc(town.name)}</h2>
-        <p class="lead">Typical prices for common jobs${town.london ? ', at London rates' : ''}. Your exact price depends on the photos you send and is fixed before you book.</p>
+        <p class="lead">What most people pay for common jobs${town.london ? ', at London rates' : ''}. Your exact price depends on the photos you send, sits inside these ranges and is fixed before you book.</p>
       </div>
     </div>
     <div class="price-layout">
       ${priceTable(trade, town, 'price-table')}
       ${breakdown(trade, town)}
     </div>
+    ${guideDetails(trade)}
     <p class="note">Parts and materials are added at UK trade prices.${town.london ? ` London prices are ${site.londonPercent - 100}% higher than elsewhere in the UK, in line with local trade rates.` : ''} There's no booking fee.</p>
     ${trade.guidePrice ? `<p class="callout">${icon('clock', 20)}<span>${esc(trade.name)} jobs are hard to price from photos, so these are guide prices. The contractor confirms the price when they see the job, and any change needs your approval.</span></p>` : ''}
   </div>
@@ -666,8 +695,9 @@ ${trustBar()}
 </section>
 <section class="section section--tint" id="prices" aria-labelledby="prices-h">
   <div class="wrap">
-    <div class="section-head"${reveal()}><span class="eyebrow">Prices · checked ${MONTH}</span><h2 id="prices-h">${esc(trade.name)} prices</h2><p class="lead">Typical prices outside London. London prices are ${site.londonPercent - 100}% higher.</p></div>
+    <div class="section-head"${reveal()}><span class="eyebrow">Prices · checked ${MONTH}</span><h2 id="prices-h">${esc(trade.name)} prices</h2><p class="lead">What most people pay outside London. London prices are ${site.londonPercent - 100}% higher.</p></div>
     <div class="price-layout">${priceTable(trade, null, 'price-table')}${breakdown(trade, null)}</div>
+    ${guideDetails(trade)}
   </div>
 </section>
 ${howItWorks(trade)}
@@ -824,7 +854,7 @@ function contractorStoreButtons({ light = false } = {}) {
 }
 
 const generalFaqs = [
-  ['How does Fixmet work out the price?', `Each trade has a rate card: an hourly rate, a call-out fee and a minimum time. When you send photos and a description, our system estimates the hours and parts, and the rate card turns that into a fixed price. Instant jobs cost ${instantExtra}% more than booking a time, and London prices are ${site.londonPercent - 100}% higher.`],
+  ['How does Fixmet work out the price?', `Each trade has a rate card: an hourly rate, a call-out fee and a minimum time. When you send photos and a description, our system estimates the hours and parts, and the rate card turns that into a fixed price. That price is then checked against a price guide of typical UK prices for the job, so it's never below or above the usual range unless your photos show a clear reason, which you're told. Instant jobs cost ${instantExtra}% more than booking a time, and London prices are ${site.londonPercent - 100}% higher.`],
   ['When am I charged?', 'Your card is held when you book and only charged the final price after the job is finished. If the contractor needs to change the price on the day, you have to approve it first.'],
   ['Are the tradespeople checked?', 'Yes. Every contractor\'s ID is checked before they can take jobs, and we ask for a DBS check and insurance. You can see their checks, rating and reviews in the app before they arrive.'],
   ['Can someone come today?', 'Choose "As soon as possible" and we offer your job to available tradespeople near you straight away. You can also pick a time that suits you.'],
@@ -838,7 +868,7 @@ function homePage() {
   const description = 'Send a photo, get a fixed price in about a minute and book a vetted local tradesperson: plumbers, electricians, cleaners and more. Pay when it\'s done.';
   const plumber = trades.find((t) => t.slug === 'plumber') ?? trades[0];
   const examples = [
-    ['plumber', 0], ['electrician', 0], ['handyman', 1], ['cleaner', 2],
+    ['plumber', 0], ['electrician', 0], ['handyman', 4], ['cleaner', 0],
   ].map(([slug, i]) => {
     const t = trades.find((x) => x.slug === slug);
     return t ? { t, job: t.jobs[i] ?? t.jobs[0] } : null;
@@ -975,7 +1005,8 @@ ${pageHero({ crumbs, eyebrow: 'Pricing', h1: 'Clear prices, <span class="accent"
       <div class="card"${reveal(1)}><span class="ico ico--lg">${icon('route', 24)}</span><h3>Plus call-out and parts</h3><p>Some trades add a call-out fee for travel and set-up. Parts are added at UK trade prices.</p></div>
       <div class="card"${reveal(2)}><span class="ico ico--lg">${icon('bolt', 24)}</span><h3>Instant and London</h3><p>Instant jobs cost ${instantExtra}% more than booking a time. London prices are ${site.londonPercent - 100}% higher, in line with local trade rates.</p></div>
     </div>
-    <p class="formula" style="margin-top:20px"${reveal()}>Example: a tap replaced outside London, booked for a time: £40 call-out + 1 hour × £47 = <strong>£87</strong>. As an instant job: <strong>£109</strong>. In London, instant: <strong>£136</strong>.</p>
+    <p class="formula" style="margin-top:20px"${reveal()}>Example: a leak fixed outside London, booked for a time: £40 call-out + 1 hour × £47 = <strong>£87</strong>. As an instant job: <strong>£109</strong>. In London, instant: <strong>£136</strong>.</p>
+    <div class="card" style="margin-top:20px"${reveal()}><h3>${icon('shield', 20)} Checked against a price guide</h3><p>Every price is then checked against a price guide of what UK customers typically pay for that job (for example, fixing a leak: £75–£130 outside London). Your price never goes below the range, and only goes above it when your photos show a clear reason, such as hidden pipework or an emergency call-out, which the app tells you. Each trade's page shows its full price guide, what's included and what can raise the price.</p></div>
   </div>
 </section>
 <section class="section" aria-labelledby="pay-h">
