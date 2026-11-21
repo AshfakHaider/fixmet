@@ -9,6 +9,13 @@
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
   const norm = (s) => String(s).toLowerCase().normalize('NFKD').replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
 
+  /* ---------- Email links (the build hides the address from bots) ---------- */
+  const unhide = (v) => String(v || '').split('').reverse().join('');
+  $$('a[data-e]').forEach((a) => {
+    a.href = 'mailto:' + unhide(a.dataset.e) + (a.dataset.s ? '?subject=' + a.dataset.s : '');
+  });
+  $$('.js-email[data-e]').forEach((el) => { el.textContent = unhide(el.dataset.e); });
+
   /* ---------- "Get a price" opens the right store ---------- */
   if (/android/i.test(navigator.userAgent)) $$('[data-app-link]').forEach((a) => { a.href = INDEX.play; });
 

@@ -65,7 +65,29 @@ const reveal = (i = 0) => ` data-reveal${i ? ` style="--i:${i}"` : ''}`;
 function write(path, html) {
   const file = join(out, path);
   mkdirSync(dirname(file), { recursive: true });
-  writeFileSync(file, html);
+  writeFileSync(file, path.endsWith('.html') ? hideEmails(html) : html);
+}
+
+/**
+ * Keeps our email address out of the page source so address-collecting bots
+ * can't read it. Links point to the contact page and text reads
+ * "info [at] fixmet.co.uk"; the page script (src/client.js, "Email links")
+ * turns them back into normal mailto links for people.
+ */
+function hideEmails(html) {
+  const email = site.supportEmail;
+  const reversed = email.split('').reverse().join('');
+  const shown = email.replace('@', ' [at] ');
+  const quoted = email.replace(/\./g, '\\.');
+  const linkPattern = new RegExp('href="mailto:' + quoted + '(?:\\?subject=([^"]*))?"', 'g');
+  const textPattern = new RegExp(quoted, 'g');
+  const result = html
+    .replace(linkPattern, (_, subject) =>
+      'href="/contact/" data-e="' + reversed + '"' + (subject ? ' data-s="' + subject + '"' : ''),
+    )
+    .replace(textPattern, '<span class="js-email" data-e="' + reversed + '">' + shown + '</span>');
+  if (result.includes(email)) throw new Error('hideEmails: email still in page');
+  return result;
 }
 
 // ---------- shared pieces ----------
@@ -77,7 +99,6 @@ const organization = {
   url: site.baseUrl,
   logo: { '@type': 'ImageObject', url: url('/assets/fixmet-logo.png'), width: 512, height: 512 },
   legalName: site.company.legalName,
-  email: site.supportEmail,
   areaServed: { '@type': 'Country', name: 'United Kingdom' },
   address: {
     '@type': 'PostalAddress',
