@@ -17,9 +17,9 @@ export const site = {
   contractorAppStoreUrl: 'https://apps.apple.com/gb/app/fixmet-contractors/id6762412056',
   contractorPlayStoreUrl: 'https://play.google.com/store/apps/details?id=com.fixmet_contractors.app',
   supportEmail: 'info@fixmet.co.uk',
-  // Same as the admin "Instant job price" and "London price" settings.
+  // Same as the admin "Instant job price" setting. London and Cardiff
+  // prices come from each trade's price guide (cityPercent and job ranges).
   instantPercent: 125,
-  londonPercent: 125,
   guarantee:
     "If the work isn't right, tell us within 7 days and we'll send someone back to fix it or refund you.",
   company: {

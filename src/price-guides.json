@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-16",
+  "updated": "2026-11-23",
   "currency": "GBP",
   "urgentRaiser": {
     "key": "urgent",
@@ -11,54 +11,238 @@
         "plumbing"
       ],
       "name": "Plumbing",
-      "summary": "Most small plumbing jobs cost £75–£150, typically about £100, done in one visit.",
-      "rates": "£40–£60 per hour (typical £50), £320–£480 per day. Emergency and out-of-hours work runs £75–£150 per hour, often with a £100–£120 call-out.",
+      "summary": "Most small plumbing jobs cost about £95–£140 in London and £85–£130 in Cardiff, done in one visit. Finding a hidden leak costs more: about £420 in London.",
+      "rates": "London: about £65–£145 for the first hour (typical £98) and £350–£700 a day. Cardiff: about £40–£90 for the first hour (typical £56) and £200–£250 a day. Most firms charge no separate call-out. Evenings and weekends cost about 1.3–1.5 times more, nights and bank holidays up to twice.",
       "dayRate": {
-        "low": 320,
-        "high": 480
+        "low": 210,
+        "high": 265
+      },
+      "cityPercent": {
+        "london": 110,
+        "cardiff": 95
       },
       "jobs": [
         {
           "key": "fix-leak",
           "name": "Fix a leak (pipe, tap or under the sink)",
-          "low": 75,
-          "typical": 100,
-          "high": 130
+          "low": 80,
+          "typical": 135,
+          "high": 195,
+          "cities": {
+            "london": {
+              "low": 76,
+              "typical": 140,
+              "high": 280
+            },
+            "cardiff": {
+              "low": 76,
+              "typical": 130,
+              "high": 185
+            }
+          }
         },
         {
           "key": "unblock-drain",
           "name": "Unblock a sink, bath, shower or toilet",
-          "low": 80,
-          "typical": 110,
-          "high": 200
+          "low": 85,
+          "typical": 115,
+          "high": 175,
+          "cities": {
+            "london": {
+              "low": 67,
+              "typical": 93,
+              "high": 185
+            },
+            "cardiff": {
+              "low": 81,
+              "typical": 110,
+              "high": 165
+            }
+          }
         },
         {
           "key": "toilet-repair",
           "name": "Fix a running or leaking toilet",
-          "low": 80,
-          "typical": 110,
-          "high": 150
+          "low": 60,
+          "typical": 88,
+          "high": 115,
+          "cities": {
+            "london": {
+              "low": 76,
+              "typical": 120,
+              "high": 220
+            },
+            "cardiff": {
+              "low": 57,
+              "typical": 84,
+              "high": 110
+            }
+          }
         },
         {
           "key": "replace-tap",
           "name": "Replace a kitchen or bathroom tap (labour)",
-          "low": 90,
-          "typical": 120,
-          "high": 160
+          "low": 80,
+          "typical": 115,
+          "high": 145,
+          "cities": {
+            "london": {
+              "low": 67,
+              "typical": 120,
+              "high": 280
+            },
+            "cardiff": {
+              "low": 76,
+              "typical": 105,
+              "high": 140
+            }
+          }
         },
         {
           "key": "burst-pipe",
           "name": "Repair a burst pipe",
-          "low": 50,
+          "low": 43,
           "typical": 150,
-          "high": 200
+          "high": 340,
+          "cities": {
+            "london": {
+              "low": 48,
+              "typical": 165,
+              "high": 370
+            }
+          }
         },
         {
           "key": "fit-radiator",
           "name": "Fit a radiator",
           "low": 150,
-          "typical": 165,
-          "high": 200
+          "typical": 220,
+          "high": 295,
+          "cities": {
+            "london": {
+              "low": 190,
+              "typical": 325,
+              "high": 565
+            },
+            "cardiff": {
+              "low": 145,
+              "typical": 210,
+              "high": 280
+            }
+          }
+        },
+        {
+          "key": "leak-detection",
+          "name": "Find a hidden leak (leak detection, trace and access)",
+          "low": 130,
+          "typical": 380,
+          "high": 675,
+          "cities": {
+            "london": {
+              "low": 145,
+              "typical": 420,
+              "high": 745
+            }
+          }
+        },
+        {
+          "key": "external-drain",
+          "name": "Unblock an outside drain",
+          "low": 70,
+          "typical": 140,
+          "high": 275,
+          "cities": {
+            "london": {
+              "low": 76,
+              "typical": 185,
+              "high": 280
+            },
+            "cardiff": {
+              "low": 67,
+              "typical": 135,
+              "high": 260
+            }
+          }
+        },
+        {
+          "key": "drain-cctv",
+          "name": "CCTV drain survey",
+          "low": 130,
+          "typical": 380,
+          "high": 495,
+          "cities": {
+            "cardiff": {
+              "low": 125,
+              "typical": 360,
+              "high": 470
+            }
+          }
+        },
+        {
+          "key": "power-flush",
+          "name": "Power flush the heating system",
+          "low": 480,
+          "typical": 585,
+          "high": 880,
+          "cities": {
+            "london": {
+              "low": 285,
+              "typical": 510,
+              "high": 810
+            },
+            "cardiff": {
+              "low": 455,
+              "typical": 560,
+              "high": 835
+            }
+          }
+        },
+        {
+          "key": "toilet-fit",
+          "name": "Fit or replace a toilet (labour)",
+          "low": 86,
+          "typical": 210,
+          "high": 365,
+          "cities": {
+            "london": {
+              "low": 95,
+              "typical": 235,
+              "high": 405
+            }
+          }
+        },
+        {
+          "key": "outside-tap",
+          "name": "Fit an outside tap",
+          "low": 140,
+          "typical": 195,
+          "high": 295,
+          "cities": {
+            "london": {
+              "low": 135,
+              "typical": 185,
+              "high": 280
+            },
+            "cardiff": {
+              "low": 135,
+              "typical": 185,
+              "high": 280
+            }
+          }
+        },
+        {
+          "key": "stopcock",
+          "name": "Replace a stopcock",
+          "low": 69,
+          "typical": 100,
+          "high": 150,
+          "cities": {
+            "london": {
+              "low": 76,
+              "typical": 110,
+              "high": 165
+            }
+          }
         }
       ],
       "included": "Labour, travel within the area, small fittings (washers, olives, PTFE), testing the repair for leaks, taking away old parts.",
@@ -83,33 +267,58 @@
         "electrician"
       ],
       "name": "Electrician",
-      "summary": "Most small electrical jobs cost £55–£150, typically about £65–£100.",
-      "rates": "About £45–£65 per hour (typical £55), around £500 per day. Emergency work is about £90 per hour.",
+      "summary": "Small electrical jobs cost about £85–£130 in London. An EICR safety certificate costs about £140 for a 1-bed flat and £230 for a 2–3 bed home in London, or £120 and £175 in Cardiff.",
+      "rates": "London: about £45–£95 an hour (typical £65) and £330–£465 a day; the first hour often costs £85–£140. Cardiff: about £35–£85 an hour (typical £51) and £240–£390 a day. Emergency work costs about £75–£110 an hour.",
       "dayRate": {
-        "low": 400,
-        "high": 550
+        "low": 255,
+        "high": 410
+      },
+      "cityPercent": {
+        "london": 115,
+        "cardiff": 95
       },
       "jobs": [
         {
           "key": "socket-switch",
           "name": "Replace a socket or light switch",
-          "low": 55,
-          "typical": 65,
-          "high": 80
+          "low": 58,
+          "typical": 77,
+          "high": 120,
+          "cities": {
+            "london": {
+              "low": 67,
+              "typical": 88,
+              "high": 140
+            }
+          }
         },
         {
           "key": "light-fitting",
           "name": "Replace a light fitting (fitting supplied)",
-          "low": 55,
-          "typical": 65,
-          "high": 90
+          "low": 41,
+          "typical": 73,
+          "high": 97,
+          "cities": {
+            "london": {
+              "low": 48,
+              "typical": 84,
+              "high": 110
+            }
+          }
         },
         {
           "key": "tripping-fuse",
           "name": "Find and fix a tripping fuse",
-          "low": 60,
-          "typical": 100,
-          "high": 150
+          "low": 66,
+          "typical": 115,
+          "high": 160,
+          "cities": {
+            "london": {
+              "low": 76,
+              "typical": 130,
+              "high": 185
+            }
+          }
         },
         {
           "key": "fan-repair",
@@ -127,17 +336,93 @@
         },
         {
           "key": "eicr",
-          "name": "Electrical safety certificate (EICR)",
-          "low": 125,
-          "typical": 210,
-          "high": 300
+          "name": "Electrical safety certificate (EICR), 2–3 bed home",
+          "low": 120,
+          "typical": 185,
+          "high": 295,
+          "cities": {
+            "london": {
+              "low": 110,
+              "typical": 235,
+              "high": 300
+            },
+            "cardiff": {
+              "low": 115,
+              "typical": 175,
+              "high": 280
+            }
+          }
         },
         {
           "key": "fuse-box",
           "name": "Replace a fuse box",
           "low": 450,
-          "typical": 625,
-          "high": 800
+          "typical": 585,
+          "high": 830,
+          "cities": {
+            "london": {
+              "low": 430,
+              "typical": 650,
+              "high": 1300
+            },
+            "cardiff": {
+              "low": 430,
+              "typical": 560,
+              "high": 790
+            }
+          }
+        },
+        {
+          "key": "eicr-flat",
+          "name": "Electrical safety certificate (EICR), studio or 1-bed flat",
+          "low": 85,
+          "typical": 125,
+          "high": 175,
+          "cities": {
+            "london": {
+              "low": 65,
+              "typical": 140,
+              "high": 185
+            },
+            "cardiff": {
+              "low": 81,
+              "typical": 120,
+              "high": 165
+            }
+          }
+        },
+        {
+          "key": "new-socket",
+          "name": "Add a new socket",
+          "low": 100,
+          "typical": 135,
+          "high": 245,
+          "cities": {
+            "london": {
+              "low": 115,
+              "typical": 150,
+              "high": 235
+            },
+            "cardiff": {
+              "low": 95,
+              "typical": 130,
+              "high": 235
+            }
+          }
+        },
+        {
+          "key": "ev-charger",
+          "name": "Install an EV charger (charger included)",
+          "low": 495,
+          "typical": 770,
+          "high": 970,
+          "cities": {
+            "london": {
+              "low": 570,
+              "typical": 885,
+              "high": 1115
+            }
+          }
         }
       ],
       "included": "Labour, testing after the work, small consumables, and a certificate for notifiable work (Part P).",
@@ -166,83 +451,220 @@
         "cleaning"
       ],
       "name": "Cleaning",
-      "summary": "A regular clean is about £25 an hour; an end-of-tenancy clean is £180–£415 depending on size.",
-      "rates": "£20–£30 per hour (typical £25). Agencies sit at the top of the range.",
+      "summary": "Regular cleaning costs about £21 an hour in London and £17 in Cardiff. An end-of-tenancy clean costs about £205–£500 in London and £195–£410 in Cardiff, depending on size.",
+      "rates": "London: regular cleaning about £17–£26 an hour (typical £21), deep cleans £24–£42. Cardiff: regular cleaning about £14–£23 an hour (typical £17), deep cleans £19–£28. Most cleaners have a 2-hour minimum.",
       "dayRate": {
-        "low": 160,
-        "high": 240
+        "low": 150,
+        "high": 225
+      },
+      "cityPercent": {
+        "london": 120,
+        "cardiff": 95
       },
       "jobs": [
         {
           "key": "regular-clean",
           "name": "Regular clean (3 hours)",
-          "low": 60,
-          "typical": 75,
-          "high": 90
+          "low": 45,
+          "typical": 53,
+          "high": 73,
+          "cities": {
+            "london": {
+              "low": 50,
+              "typical": 63,
+              "high": 78
+            },
+            "cardiff": {
+              "low": 43,
+              "typical": 50,
+              "high": 70
+            }
+          }
         },
         {
           "key": "deep-clean-2bed",
           "name": "Deep clean, 2-bed flat",
-          "low": 180,
-          "typical": 240,
-          "high": 300
+          "low": 120,
+          "typical": 165,
+          "high": 210,
+          "cities": {
+            "london": {
+              "low": 145,
+              "typical": 195,
+              "high": 250
+            }
+          }
         },
         {
           "key": "eot-1bed",
           "name": "End of tenancy, studio or 1-bed",
-          "low": 180,
-          "typical": 200,
-          "high": 220
+          "low": 125,
+          "typical": 170,
+          "high": 215,
+          "cities": {
+            "london": {
+              "low": 150,
+              "typical": 205,
+              "high": 260
+            }
+          }
         },
         {
           "key": "eot-2bed",
           "name": "End of tenancy, 2-bed",
-          "low": 240,
-          "typical": 260,
-          "high": 280
+          "low": 165,
+          "typical": 205,
+          "high": 250,
+          "cities": {
+            "london": {
+              "low": 170,
+              "typical": 250,
+              "high": 350
+            },
+            "cardiff": {
+              "low": 155,
+              "typical": 195,
+              "high": 235
+            }
+          }
         },
         {
           "key": "eot-3bed",
           "name": "End of tenancy, 3-bed",
-          "low": 280,
-          "typical": 300,
-          "high": 320
+          "low": 195,
+          "typical": 290,
+          "high": 430,
+          "cities": {
+            "london": {
+              "low": 285,
+              "typical": 365,
+              "high": 550
+            },
+            "cardiff": {
+              "low": 185,
+              "typical": 275,
+              "high": 410
+            }
+          }
         },
         {
           "key": "eot-4bed",
           "name": "End of tenancy, 4–5 bed house",
-          "low": 350,
-          "typical": 370,
-          "high": 415
+          "low": 315,
+          "typical": 415,
+          "high": 465,
+          "cities": {
+            "london": {
+              "low": 380,
+              "typical": 500,
+              "high": 560
+            }
+          }
         },
         {
           "key": "oven-clean",
-          "name": "Oven clean (single or double)",
-          "low": 50,
-          "typical": 50,
-          "high": 70
+          "name": "Oven clean, single",
+          "low": 35,
+          "typical": 54,
+          "high": 73,
+          "cities": {
+            "london": {
+              "low": 57,
+              "typical": 82,
+              "high": 110
+            },
+            "cardiff": {
+              "low": 33,
+              "typical": 51,
+              "high": 70
+            }
+          }
         },
         {
           "key": "range-cooker",
           "name": "Range cooker clean",
-          "low": 100,
-          "typical": 125,
-          "high": 150
+          "low": 90,
+          "typical": 115,
+          "high": 145,
+          "cities": {
+            "london": {
+              "low": 115,
+              "typical": 125,
+              "high": 175
+            },
+            "cardiff": {
+              "low": 86,
+              "typical": 110,
+              "high": 140
+            }
+          }
         },
         {
           "key": "sofa-clean",
           "name": "Sofa clean (3-seater)",
-          "low": 50,
-          "typical": 70,
-          "high": 100
+          "low": 40,
+          "typical": 73,
+          "high": 110,
+          "cities": {
+            "london": {
+              "low": 48,
+              "typical": 84,
+              "high": 125
+            },
+            "cardiff": {
+              "low": 38,
+              "typical": 70,
+              "high": 100
+            }
+          }
         },
         {
           "key": "after-builders",
           "name": "Clean after building work",
-          "low": 30,
-          "typical": 32.5,
-          "high": 35,
+          "low": 20,
+          "typical": 24.5,
+          "high": 29.5,
+          "cities": {
+            "london": {
+              "low": 24,
+              "typical": 27,
+              "high": 32.5
+            },
+            "cardiff": {
+              "low": 19,
+              "typical": 23.5,
+              "high": 28
+            }
+          },
           "unit": "per hour"
+        },
+        {
+          "key": "oven-double",
+          "name": "Oven clean, double",
+          "low": 74,
+          "typical": 93,
+          "high": 115,
+          "cities": {
+            "london": {
+              "low": 88,
+              "typical": 110,
+              "high": 140
+            }
+          }
+        },
+        {
+          "key": "mattress-clean",
+          "name": "Mattress clean",
+          "low": 28,
+          "typical": 39,
+          "high": 50,
+          "cities": {
+            "london": {
+              "low": 33,
+              "typical": 47,
+              "high": 60
+            }
+          }
         }
       ],
       "included": "Cleaning products and equipment, kitchen surfaces and appliances outside, bathrooms, dusting, hoovering and mopping.",
@@ -267,56 +689,146 @@
         "carpet-fitter-cleaner"
       ],
       "name": "Carpets",
-      "summary": "Carpet cleaning starts at about £50 a room, often with an £85 minimum per visit. Fitting is about £8–£12 per m² for labour and underlay.",
-      "rates": "Fitters charge £20–£35 per hour or £150–£250 per day; cleaning firms £60–£120 per hour.",
+      "summary": "Carpet cleaning costs about £33 for a bedroom and £42–£56 for a living room, in London and Cardiff alike. Fitting labour is about £11 per m² in London and £7 in Cardiff.",
+      "rates": "Cleaning is priced per room, with a minimum visit of about £65–£90. Fitters charge about £7–£19 per m² in London and £3–£14 in Cardiff.",
       "dayRate": {
         "low": 150,
         "high": 250
       },
+      "cityPercent": {
+        "london": 100,
+        "cardiff": 100
+      },
       "jobs": [
         {
           "key": "clean-room",
-          "name": "Clean a small room (4 m × 4 m)",
-          "low": 40,
-          "typical": 50,
-          "high": 75
+          "name": "Clean a bedroom carpet",
+          "low": 29,
+          "typical": 33,
+          "high": 37,
+          "cities": {
+            "london": {
+              "low": 24,
+              "typical": 33,
+              "high": 47
+            },
+            "cardiff": {
+              "low": 29,
+              "typical": 33,
+              "high": 37
+            }
+          }
         },
         {
           "key": "clean-stairs",
           "name": "Clean stairs and landing",
-          "low": 70,
-          "typical": 85,
-          "high": 100
+          "low": 62,
+          "typical": 65,
+          "high": 74,
+          "cities": {
+            "london": {
+              "low": 48,
+              "typical": 54,
+              "high": 61
+            },
+            "cardiff": {
+              "low": 62,
+              "typical": 65,
+              "high": 74
+            }
+          }
         },
         {
           "key": "stain-protector",
           "name": "Stain protector",
-          "low": 15,
-          "typical": 15,
-          "high": 15,
+          "low": 9.5,
+          "typical": 14,
+          "high": 18.5,
+          "cities": {
+            "london": {
+              "low": 11.5,
+              "typical": 13,
+              "high": 15
+            },
+            "cardiff": {
+              "low": 9.5,
+              "typical": 14,
+              "high": 18.5
+            }
+          },
           "unit": "per room"
         },
         {
           "key": "fit-per-m2",
           "name": "Fit carpet with underlay (labour and underlay)",
-          "low": 8,
-          "typical": 10,
-          "high": 12,
+          "low": 3,
+          "typical": 6.5,
+          "high": 14,
+          "cities": {
+            "london": {
+              "low": 6.5,
+              "typical": 11,
+              "high": 18.5
+            },
+            "cardiff": {
+              "low": 3,
+              "typical": 6.5,
+              "high": 14
+            }
+          },
           "unit": "per m²"
         },
         {
           "key": "fit-stairs",
           "name": "Fit a straight staircase",
-          "low": 150,
-          "typical": 200,
-          "high": 250
+          "low": 125,
+          "typical": 165,
+          "high": 205,
+          "cities": {
+            "cardiff": {
+              "low": 125,
+              "typical": 165,
+              "high": 205
+            }
+          }
         },
         {
           "key": "carpet-bedroom",
           "name": "Carpet a standard bedroom (carpet supplied by fitter)",
-          "low": 550,
-          "typical": 600,
-          "high": 650
+          "low": 285,
+          "typical": 420,
+          "high": 835,
+          "cities": {
+            "london": {
+              "low": 240,
+              "typical": 370,
+              "high": 640
+            },
+            "cardiff": {
+              "low": 285,
+              "typical": 420,
+              "high": 835
+            }
+          }
+        },
+        {
+          "key": "clean-lounge",
+          "name": "Clean a living room carpet",
+          "low": 48,
+          "typical": 56,
+          "high": 60,
+          "cities": {
+            "london": {
+              "low": 38,
+              "typical": 42,
+              "high": 56
+            },
+            "cardiff": {
+              "low": 48,
+              "typical": 56,
+              "high": 60
+            }
+          }
         }
       ],
       "included": "Cleaning: pre-treatment of normal marks and drying advice. Fitting: gripper, fitting, trimming and taking away offcuts.",
@@ -346,19 +858,35 @@
         "decorator"
       ],
       "name": "Painting and decorating",
-      "summary": "Painting a medium room costs about £350–£550, typically £450. Decorators charge £250–£350 a day.",
-      "rates": "£250–£350 per day (typical £300).",
+      "summary": "Painting a room costs about £465 in London and £365 in Cardiff. Decorators charge about £235–£325 a day in London and £170–£300 in Cardiff.",
+      "rates": "London: £235–£325 a day for one decorator. Cardiff: £170–£300 a day.",
       "dayRate": {
-        "low": 250,
-        "high": 350
+        "low": 175,
+        "high": 310
+      },
+      "cityPercent": {
+        "london": 120,
+        "cardiff": 95
       },
       "jobs": [
         {
           "key": "paint-room",
           "name": "Paint one room, walls and ceiling",
-          "low": 350,
-          "typical": 450,
-          "high": 550
+          "low": 195,
+          "typical": 385,
+          "high": 625,
+          "cities": {
+            "london": {
+              "low": 285,
+              "typical": 465,
+              "high": 700
+            },
+            "cardiff": {
+              "low": 185,
+              "typical": 365,
+              "high": 595
+            }
+          }
         },
         {
           "key": "paint-walls-m2",
@@ -385,30 +913,100 @@
         {
           "key": "wallpaper-room",
           "name": "Wallpaper a room (labour)",
-          "low": 350,
-          "typical": 450,
-          "high": 500
+          "low": 245,
+          "typical": 430,
+          "high": 675,
+          "cities": {
+            "cardiff": {
+              "low": 235,
+              "typical": 410,
+              "high": 640
+            }
+          }
         },
         {
           "key": "hall-stairs",
           "name": "Hall, stairs and landing",
-          "low": 1450,
-          "typical": 1600,
-          "high": 1750
+          "low": 395,
+          "typical": 770,
+          "high": 1155,
+          "cities": {
+            "cardiff": {
+              "low": 375,
+              "typical": 730,
+              "high": 1095
+            }
+          }
         },
         {
           "key": "flat-2bed",
           "name": "Whole 2-bed flat",
-          "low": 1500,
-          "typical": 2000,
-          "high": 2500
+          "low": 800,
+          "typical": 1420,
+          "high": 2495,
+          "cities": {
+            "cardiff": {
+              "low": 760,
+              "typical": 1350,
+              "high": 2370
+            }
+          }
         },
         {
           "key": "exterior-semi",
           "name": "Outside of a 3-bed semi",
           "low": 1100,
-          "typical": 1300,
-          "high": 1500
+          "typical": 1960,
+          "high": 3425,
+          "cities": {
+            "cardiff": {
+              "low": 1045,
+              "typical": 1860,
+              "high": 3255
+            }
+          }
+        },
+        {
+          "key": "house-3bed",
+          "name": "Whole 3-bed house, inside",
+          "low": 1080,
+          "typical": 1925,
+          "high": 3370,
+          "cities": {
+            "cardiff": {
+              "low": 1025,
+              "typical": 1825,
+              "high": 3200
+            }
+          }
+        },
+        {
+          "key": "ceiling-only",
+          "name": "Paint a ceiling",
+          "low": 145,
+          "typical": 265,
+          "high": 480,
+          "cities": {
+            "cardiff": {
+              "low": 140,
+              "typical": 250,
+              "high": 455
+            }
+          }
+        },
+        {
+          "key": "fence-paint",
+          "name": "Paint a garden fence",
+          "low": 145,
+          "typical": 290,
+          "high": 480,
+          "cities": {
+            "cardiff": {
+              "low": 140,
+              "typical": 275,
+              "high": 455
+            }
+          }
         }
       ],
       "included": "Preparation (filling small cracks, sanding, masking, dust sheets), two coats, clearing up.",
@@ -437,54 +1035,115 @@
         "handy-man"
       ],
       "name": "Handyman",
-      "summary": "Most handyman jobs take one to four hours and cost £45–£200. Many charge a one-hour minimum.",
-      "rates": "About £25–£45 per hour, £180–£300 per day.",
+      "summary": "Most handyman jobs take one to four hours: about £80–£170 in London and £50–£150 in Cardiff. Many charge a one- or two-hour minimum.",
+      "rates": "London: about £38–£84 an hour (typical £51) and £285–£430 a day. Cardiff: about £24–£47 an hour (typical £33) and £170–£305 a day.",
       "dayRate": {
-        "low": 180,
-        "high": 300
+        "low": 175,
+        "high": 315
+      },
+      "cityPercent": {
+        "london": 130,
+        "cardiff": 95
       },
       "jobs": [
         {
           "key": "hang-pictures",
           "name": "Hang pictures or a mirror",
           "low": 40,
-          "typical": 45,
-          "high": 60
+          "typical": 51,
+          "high": 64,
+          "cities": {
+            "london": {
+              "low": 38,
+              "typical": 79,
+              "high": 150
+            },
+            "cardiff": {
+              "low": 38,
+              "typical": 48,
+              "high": 60
+            }
+          }
         },
         {
           "key": "curtain-pole",
           "name": "Put up a curtain pole or blind",
-          "low": 40,
-          "typical": 45,
-          "high": 60
+          "low": 37,
+          "typical": 64,
+          "high": 105,
+          "cities": {
+            "london": {
+              "low": 48,
+              "typical": 84,
+              "high": 140
+            }
+          }
         },
         {
           "key": "minor-fix",
           "name": "Minor plumbing or electrical fix",
-          "low": 50,
-          "typical": 60,
-          "high": 70
+          "low": 51,
+          "typical": 75,
+          "high": 100,
+          "cities": {
+            "london": {
+              "low": 67,
+              "typical": 98,
+              "high": 130
+            }
+          }
         },
         {
           "key": "tv-mount",
           "name": "Mount a TV on the wall (bracket supplied)",
-          "low": 60,
-          "typical": 80,
-          "high": 120
+          "low": 55,
+          "typical": 83,
+          "high": 115,
+          "cities": {
+            "london": {
+              "low": 57,
+              "typical": 105,
+              "high": 185
+            },
+            "cardiff": {
+              "low": 52,
+              "typical": 79,
+              "high": 105
+            }
+          }
         },
         {
           "key": "flat-pack",
           "name": "Assemble flat-pack furniture",
-          "low": 60,
-          "typical": 90,
-          "high": 120
+          "low": 40,
+          "typical": 88,
+          "high": 135,
+          "cities": {
+            "london": {
+              "low": 38,
+              "typical": 98,
+              "high": 165
+            },
+            "cardiff": {
+              "low": 38,
+              "typical": 84,
+              "high": 130
+            }
+          }
         },
         {
           "key": "shelves-few",
           "name": "Put up shelves (a few)",
-          "low": 45,
-          "typical": 60,
-          "high": 90
+          "low": 29,
+          "typical": 68,
+          "high": 105,
+          "cities": {
+            "london": {
+              "low": 38,
+              "typical": 88,
+              "high": 140
+            }
+          }
         },
         {
           "key": "shelves-room",
@@ -497,8 +1156,62 @@
           "key": "half-day",
           "name": "Half a day of odd jobs",
           "low": 110,
-          "typical": 135,
-          "high": 170
+          "typical": 155,
+          "high": 205,
+          "cities": {
+            "london": {
+              "low": 190,
+              "typical": 215,
+              "high": 240
+            },
+            "cardiff": {
+              "low": 105,
+              "typical": 150,
+              "high": 195
+            }
+          }
+        },
+        {
+          "key": "lock-change",
+          "name": "Change a door lock",
+          "low": 66,
+          "typical": 97,
+          "high": 130,
+          "cities": {
+            "london": {
+              "low": 86,
+              "typical": 125,
+              "high": 165
+            }
+          }
+        },
+        {
+          "key": "reseal",
+          "name": "Reseal a bath or shower",
+          "low": 44,
+          "typical": 64,
+          "high": 86,
+          "cities": {
+            "london": {
+              "low": 57,
+              "typical": 84,
+              "high": 110
+            }
+          }
+        },
+        {
+          "key": "tv-mount-hidden",
+          "name": "Mount a TV with hidden cables",
+          "low": 88,
+          "typical": 130,
+          "high": 180,
+          "cities": {
+            "london": {
+              "low": 115,
+              "typical": 170,
+              "high": 235
+            }
+          }
         }
       ],
       "included": "Labour, standard screws, plugs and fixings, tidying up.",
@@ -527,26 +1240,54 @@
         "carpenter-joiner"
       ],
       "name": "Carpentry",
-      "summary": "Small carpentry repairs cost about £45–£150; hanging a new internal door costs £125–£350 including a basic door.",
-      "rates": "About £30–£45 per hour, £200–£300 per day (Fixmet estimate).",
+      "summary": "Easing a sticking door costs about £95 in London and £65 in Cardiff. Hanging a new internal door costs about £205 in London and £165 in Cardiff, including a basic door.",
+      "rates": "London: about £38–£56 an hour and £235–£420 a day. Cardiff: about £25–£42 an hour and £160–£260 a day.",
       "dayRate": {
-        "low": 200,
-        "high": 300
+        "low": 165,
+        "high": 270
+      },
+      "cityPercent": {
+        "london": 130,
+        "cardiff": 95
       },
       "jobs": [
         {
           "key": "ease-door",
           "name": "Ease a sticking or dropped door",
           "low": 45,
-          "typical": 60,
-          "high": 90
+          "typical": 67,
+          "high": 88,
+          "cities": {
+            "london": {
+              "low": 67,
+              "typical": 93,
+              "high": 120
+            },
+            "cardiff": {
+              "low": 43,
+              "typical": 63,
+              "high": 84
+            }
+          }
         },
         {
           "key": "hang-door-softwood",
           "name": "Hang an internal door (softwood door included)",
-          "low": 125,
-          "typical": 200,
-          "high": 350
+          "low": 110,
+          "typical": 170,
+          "high": 235,
+          "cities": {
+            "london": {
+              "low": 150,
+              "typical": 205,
+              "high": 280
+            },
+            "cardiff": {
+              "low": 105,
+              "typical": 165,
+              "high": 225
+            }
+          }
         },
         {
           "key": "hang-door-hardwood",
@@ -558,9 +1299,16 @@
         {
           "key": "skirting-room",
           "name": "Fit new skirting in one room",
-          "low": 150,
-          "typical": 220,
-          "high": 300
+          "low": 110,
+          "typical": 215,
+          "high": 345,
+          "cities": {
+            "london": {
+              "low": 145,
+              "typical": 280,
+              "high": 445
+            }
+          }
         },
         {
           "key": "decking-repair",
@@ -603,34 +1351,69 @@
         "builder"
       ],
       "name": "Builder",
-      "summary": "Builders usually price by the day: about £250–£350 for a builder, £120–£280 for a labourer. Small repairs are £150–£800.",
-      "rates": "Builder about £300 per day; bricklayer £250–£350; labourer £120–£280.",
+      "summary": "Builders usually price by the day: about £235–£465 in London and £140–£260 in Cardiff. Patching plaster costs about £205 in London and £185 in Cardiff.",
+      "rates": "London: a builder or bricklayer costs £235–£465 a day and a labourer £115–£235. Cardiff: £140–£260 a day.",
       "dayRate": {
-        "low": 250,
-        "high": 350
+        "low": 145,
+        "high": 270
+      },
+      "cityPercent": {
+        "london": 145,
+        "cardiff": 95
       },
       "jobs": [
         {
           "key": "patch-plaster",
           "name": "Patch plaster on a wall (small area)",
           "low": 150,
-          "typical": 220,
-          "high": 300
+          "typical": 195,
+          "high": 245,
+          "cities": {
+            "london": {
+              "low": 145,
+              "typical": 205,
+              "high": 300
+            },
+            "cardiff": {
+              "low": 145,
+              "typical": 185,
+              "high": 235
+            }
+          }
         },
         {
           "key": "repoint-brick-m2",
           "name": "Repoint brickwork",
-          "low": 50,
-          "typical": 55,
-          "high": 60,
+          "low": 20,
+          "typical": 34.5,
+          "high": 63.5,
+          "cities": {
+            "london": {
+              "low": 43,
+              "typical": 60.5,
+              "high": 83.5
+            },
+            "cardiff": {
+              "low": 19,
+              "typical": 32.5,
+              "high": 60.5
+            }
+          },
           "unit": "per m²"
         },
         {
           "key": "repoint-stone-m2",
           "name": "Repoint stonework",
-          "low": 60,
-          "typical": 80,
-          "high": 100,
+          "low": 46,
+          "typical": 61,
+          "high": 77,
+          "cities": {
+            "london": {
+              "low": 66.5,
+              "typical": 88.5,
+              "high": 111.5
+            }
+          },
           "unit": "per m²"
         },
         {
@@ -643,16 +1426,59 @@
         {
           "key": "repoint-chimney",
           "name": "Repoint a chimney",
-          "low": 500,
-          "typical": 750,
-          "high": 1000
+          "low": 275,
+          "typical": 490,
+          "high": 720,
+          "cities": {
+            "london": {
+              "low": 570,
+              "typical": 835,
+              "high": 1300
+            },
+            "cardiff": {
+              "low": 260,
+              "typical": 465,
+              "high": 685
+            }
+          }
         },
         {
           "key": "repoint-front",
           "name": "Repoint the front of a house",
-          "low": 1500,
-          "typical": 1750,
-          "high": 2200
+          "low": 800,
+          "typical": 1275,
+          "high": 1760,
+          "cities": {
+            "london": {
+              "low": 1425,
+              "typical": 2790,
+              "high": 4650
+            },
+            "cardiff": {
+              "low": 760,
+              "typical": 1210,
+              "high": 1675
+            }
+          }
+        },
+        {
+          "key": "skim-room",
+          "name": "Skim plaster a room",
+          "low": 240,
+          "typical": 570,
+          "high": 965,
+          "cities": {
+            "london": {
+              "low": 285,
+              "typical": 560,
+              "high": 1025
+            },
+            "cardiff": {
+              "low": 230,
+              "typical": 540,
+              "high": 915
+            }
+          }
         }
       ],
       "included": "Labour, sand and cement for small repairs, clearing the work area.",
@@ -681,26 +1507,44 @@
         "roofer"
       ],
       "name": "Roofer",
-      "summary": "Small roof repairs usually cost £150–£500. Larger repairs are priced per m² or per metre, and access equipment is extra.",
-      "rates": "£280–£360 per day.",
+      "summary": "Replacing a few slipped tiles costs about £235 in London, and finding and fixing a leak about £325. Larger repairs are priced per m² or per metre, and access equipment is extra.",
+      "rates": "Cardiff: about £33–£60 an hour and £140–£280 a day. London costs about 20% more. Scaffolding is extra.",
       "dayRate": {
-        "low": 280,
-        "high": 360
+        "low": 145,
+        "high": 290
+      },
+      "cityPercent": {
+        "london": 120,
+        "cardiff": 95
       },
       "jobs": [
         {
           "key": "slipped-tiles",
           "name": "Replace a few slipped tiles (ladder access)",
-          "low": 150,
-          "typical": 230,
-          "high": 350
+          "low": 120,
+          "typical": 195,
+          "high": 390,
+          "cities": {
+            "london": {
+              "low": 145,
+              "typical": 235,
+              "high": 465
+            }
+          }
         },
         {
           "key": "roof-leak",
           "name": "Find and repair a roof leak",
-          "low": 200,
-          "typical": 320,
-          "high": 500
+          "low": 160,
+          "typical": 270,
+          "high": 930,
+          "cities": {
+            "london": {
+              "low": 190,
+              "typical": 325,
+              "high": 1115
+            }
+          }
         },
         {
           "key": "concrete-tiles-m2",
@@ -745,18 +1589,60 @@
         {
           "key": "stepped-flashing-m",
           "name": "Replace stepped lead flashing",
-          "low": 80,
-          "typical": 100,
-          "high": 120,
+          "low": 63.5,
+          "typical": 89,
+          "high": 116.5,
+          "cities": {
+            "london": {
+              "low": 76,
+              "typical": 107,
+              "high": 139.5
+            }
+          },
           "unit": "per metre"
         },
         {
           "key": "dry-ridge-m",
           "name": "Dry ridge system",
-          "low": 50,
-          "typical": 60,
-          "high": 70,
+          "low": 59.5,
+          "typical": 83,
+          "high": 108.5,
+          "cities": {
+            "london": {
+              "low": 71.5,
+              "typical": 99.5,
+              "high": 130
+            }
+          },
           "unit": "per metre"
+        },
+        {
+          "key": "roof-inspection",
+          "name": "Roof inspection and report",
+          "low": 90,
+          "typical": 145,
+          "high": 295,
+          "cities": {
+            "cardiff": {
+              "low": 86,
+              "typical": 140,
+              "high": 280
+            }
+          }
+        },
+        {
+          "key": "make-safe",
+          "name": "Emergency make-safe (tarp or temporary repair)",
+          "low": 200,
+          "typical": 310,
+          "high": 465,
+          "cities": {
+            "london": {
+              "low": 240,
+              "typical": 370,
+              "high": 560
+            }
+          }
         }
       ],
       "included": "Labour, matching tiles or slates for small areas, fixings, taking away broken tiles.",
@@ -785,47 +1671,106 @@
         "gutter-fixer"
       ],
       "name": "Gutters",
-      "summary": "Gutter cleaning costs about £50–£120 for a small terraced house, rising to £130–£165 for a detached house.",
-      "rates": "£20–£30 per hour, £150–£250 per day.",
+      "summary": "Gutter cleaning costs about £90 for a terraced house and £105 for a semi in London, and about £70 and £80 in Cardiff.",
+      "rates": "Priced per house and number of storeys. Where firms charge by the hour, it is about £20–£35.",
       "dayRate": {
         "low": 150,
         "high": 250
+      },
+      "cityPercent": {
+        "london": 110,
+        "cardiff": 95
       },
       "jobs": [
         {
           "key": "clean-terrace",
           "name": "Clean gutters, small terraced house (about 5 m)",
-          "low": 50,
-          "typical": 85,
-          "high": 120
+          "low": 60,
+          "typical": 73,
+          "high": 88,
+          "cities": {
+            "london": {
+              "low": 62,
+              "typical": 88,
+              "high": 105
+            },
+            "cardiff": {
+              "low": 57,
+              "typical": 70,
+              "high": 84
+            }
+          }
         },
         {
           "key": "clean-semi",
           "name": "Clean gutters, semi-detached (about 15 m)",
-          "low": 100,
-          "typical": 125,
-          "high": 150
+          "low": 49,
+          "typical": 86,
+          "high": 155,
+          "cities": {
+            "london": {
+              "low": 65,
+              "typical": 105,
+              "high": 170
+            },
+            "cardiff": {
+              "low": 47,
+              "typical": 82,
+              "high": 150
+            }
+          }
         },
         {
           "key": "clean-detached",
           "name": "Clean gutters, detached 4-bed (about 20 m)",
-          "low": 130,
-          "typical": 150,
-          "high": 165
+          "low": 88,
+          "typical": 140,
+          "high": 190,
+          "cities": {
+            "london": {
+              "low": 105,
+              "typical": 145,
+              "high": 215
+            },
+            "cardiff": {
+              "low": 84,
+              "typical": 135,
+              "high": 180
+            }
+          }
         },
         {
           "key": "clean-three-storey",
           "name": "Clean gutters, three-storey (gutter vacuum)",
-          "low": 165,
-          "typical": 230,
-          "high": 300
+          "low": 150,
+          "typical": 225,
+          "high": 295,
+          "cities": {
+            "london": {
+              "low": 115,
+              "typical": 205,
+              "high": 325
+            },
+            "cardiff": {
+              "low": 145,
+              "typical": 215,
+              "high": 280
+            }
+          }
         },
         {
           "key": "repair-upvc-m",
           "name": "Repair uPVC guttering",
-          "low": 30,
-          "typical": 30,
-          "high": 30,
+          "low": 34.5,
+          "typical": 38,
+          "high": 42.5,
+          "cities": {
+            "london": {
+              "low": 38,
+              "typical": 42,
+              "high": 46.5
+            }
+          },
           "unit": "per metre"
         },
         {
@@ -850,6 +1795,20 @@
           "typical": 25,
           "high": 25,
           "unit": "per metre"
+        },
+        {
+          "key": "fascia-clean",
+          "name": "Clean fascias and soffits",
+          "low": 39,
+          "typical": 68,
+          "high": 100,
+          "cities": {
+            "london": {
+              "low": 43,
+              "typical": 74,
+              "high": 110
+            }
+          }
         }
       ],
       "included": "Removing leaves, moss and debris; clearing downpipes; flushing to check flow; taking waste away; pointing out visible damage.",
@@ -878,47 +1837,111 @@
         "window-cleaner"
       ],
       "name": "Window cleaning",
-      "summary": "Outside window cleaning costs about £30–£40 per visit for most houses.",
-      "rates": "About £20–£30 per hour. Regular customers on a 4–8 week round pay less per visit than one-off cleans.",
+      "summary": "Outside window cleaning costs about £30–£50 a visit in London and £25–£40 in Cardiff. A first or one-off clean costs more than a regular round.",
+      "rates": "Priced per house. Regular customers on a 4–8 week round pay less per visit; a one-off clean costs up to twice as much.",
       "dayRate": {
         "low": 160,
         "high": 240
+      },
+      "cityPercent": {
+        "london": 115,
+        "cardiff": 95
       },
       "jobs": [
         {
           "key": "outside-terrace",
           "name": "Outside only, terraced house or bungalow",
-          "low": 25,
-          "typical": 30,
-          "high": 35
+          "low": 12,
+          "typical": 24,
+          "high": 34,
+          "cities": {
+            "london": {
+              "low": 19,
+              "typical": 31,
+              "high": 37
+            },
+            "cardiff": {
+              "low": 11,
+              "typical": 23,
+              "high": 33
+            }
+          }
         },
         {
           "key": "outside-semi",
           "name": "Outside only, semi-detached",
-          "low": 30,
-          "typical": 35,
-          "high": 40
+          "low": 15,
+          "typical": 32,
+          "high": 69,
+          "cities": {
+            "london": {
+              "low": 21,
+              "typical": 36,
+              "high": 59
+            },
+            "cardiff": {
+              "low": 14,
+              "typical": 31,
+              "high": 65
+            }
+          }
         },
         {
           "key": "outside-detached",
           "name": "Outside only, detached",
-          "low": 35,
-          "typical": 40,
-          "high": 50
+          "low": 20,
+          "typical": 39,
+          "high": 98,
+          "cities": {
+            "london": {
+              "low": 38,
+              "typical": 51,
+              "high": 71
+            },
+            "cardiff": {
+              "low": 19,
+              "typical": 37,
+              "high": 93
+            }
+          }
         },
         {
           "key": "inside-outside-3bed",
           "name": "Inside and outside, 3-bed house",
-          "low": 50,
-          "typical": 65,
-          "high": 80
+          "low": 30,
+          "typical": 49,
+          "high": 78,
+          "cities": {
+            "london": {
+              "low": 43,
+              "typical": 70,
+              "high": 87
+            },
+            "cardiff": {
+              "low": 29,
+              "typical": 47,
+              "high": 74
+            }
+          }
         },
         {
           "key": "conservatory",
           "name": "Conservatory clean",
-          "low": 60,
-          "typical": 85,
-          "high": 120
+          "low": 40,
+          "typical": 78,
+          "high": 145,
+          "cities": {
+            "london": {
+              "low": 48,
+              "typical": 60,
+              "high": 130
+            },
+            "cardiff": {
+              "low": 38,
+              "typical": 74,
+              "high": 140
+            }
+          }
         }
       ],
       "included": "Glass, frames and sills on the outside; pure-water pole or ladder.",
@@ -947,27 +1970,55 @@
         "patio-cleaner"
       ],
       "name": "Patio care",
-      "summary": "Pressure-washing a patio costs about £2–£5 per m², so a typical 20 m² patio is £60–£100 once a minimum charge applies. Cleaning and sealing roughly doubles it.",
-      "rates": "£250–£350 per day.",
+      "summary": "Pressure-washing a patio costs about £4–£5 per m², so a typical 20 m² patio is about £110 once a minimum charge applies. Cleaning and sealing costs about three times as much.",
+      "rates": "About £3–£7 per m² to clean in London and Cardiff; sealing adds about £5–£10 per m². Most firms have a minimum of about £80–£140.",
       "dayRate": {
         "low": 250,
         "high": 350
+      },
+      "cityPercent": {
+        "london": 95,
+        "cardiff": 95
       },
       "jobs": [
         {
           "key": "slabs-m2",
           "name": "Clean patio slabs",
-          "low": 2,
-          "typical": 3,
-          "high": 4.5,
+          "low": 3,
+          "typical": 4,
+          "high": 6,
+          "cities": {
+            "london": {
+              "low": 3,
+              "typical": 3.5,
+              "high": 7.5
+            },
+            "cardiff": {
+              "low": 3,
+              "typical": 3.5,
+              "high": 5.5
+            }
+          },
           "unit": "per m²"
         },
         {
           "key": "block-paving-m2",
           "name": "Clean block paving",
-          "low": 2.5,
-          "typical": 3.5,
-          "high": 5.25,
+          "low": 4,
+          "typical": 5,
+          "high": 7,
+          "cities": {
+            "london": {
+              "low": 4,
+              "typical": 5,
+              "high": 6.5
+            },
+            "cardiff": {
+              "low": 4,
+              "typical": 4.5,
+              "high": 6.5
+            }
+          },
           "unit": "per m²"
         },
         {
@@ -976,38 +2027,116 @@
           "low": 3,
           "typical": 4.5,
           "high": 6,
+          "cities": {
+            "london": {
+              "low": 3,
+              "typical": 4,
+              "high": 5.5
+            }
+          },
           "unit": "per m²"
         },
         {
           "key": "seal-slabs-m2",
           "name": "Clean and seal patio slabs",
-          "low": 4,
-          "typical": 6.5,
-          "high": 9,
+          "low": 10,
+          "typical": 13.5,
+          "high": 17.5,
+          "cities": {
+            "london": {
+              "low": 6.5,
+              "typical": 10,
+              "high": 12
+            },
+            "cardiff": {
+              "low": 9.5,
+              "typical": 13,
+              "high": 16.5
+            }
+          },
           "unit": "per m²"
         },
         {
           "key": "seal-block-m2",
           "name": "Clean and seal block paving",
-          "low": 4,
-          "typical": 7,
-          "high": 10,
+          "low": 12,
+          "typical": 15.5,
+          "high": 19.5,
+          "cities": {
+            "london": {
+              "low": 9.5,
+              "typical": 14,
+              "high": 18.5
+            },
+            "cardiff": {
+              "low": 11.5,
+              "typical": 15,
+              "high": 18.5
+            }
+          },
           "unit": "per m²"
         },
         {
           "key": "repoint-patio-m2",
           "name": "Re-point a patio",
-          "low": 10,
-          "typical": 15,
-          "high": 20,
+          "low": 20,
+          "typical": 24.5,
+          "high": 34.5,
+          "cities": {
+            "cardiff": {
+              "low": 19,
+              "typical": 23.5,
+              "high": 32.5
+            }
+          },
           "unit": "per m²"
         },
         {
           "key": "patio-20m2",
           "name": "Typical 20 m² patio clean",
-          "low": 60,
-          "typical": 80,
-          "high": 100
+          "low": 80,
+          "typical": 115,
+          "high": 145,
+          "cities": {
+            "london": {
+              "low": 86,
+              "typical": 110,
+              "high": 140
+            },
+            "cardiff": {
+              "low": 76,
+              "typical": 110,
+              "high": 140
+            }
+          }
+        },
+        {
+          "key": "driveway-small",
+          "name": "Clean a 1-car driveway",
+          "low": 50,
+          "typical": 73,
+          "high": 98,
+          "cities": {
+            "cardiff": {
+              "low": 48,
+              "typical": 70,
+              "high": 93
+            }
+          }
+        },
+        {
+          "key": "driveway-large",
+          "name": "Clean a 2–3 car driveway",
+          "low": 100,
+          "typical": 135,
+          "high": 175,
+          "cities": {
+            "cardiff": {
+              "low": 95,
+              "typical": 130,
+              "high": 165
+            }
+          }
         }
       ],
       "included": "Pressure washing, moss and weed removal from joints, rinsing away debris.",
@@ -1036,26 +2165,54 @@
         "gardener-landscaper"
       ],
       "name": "Gardening",
-      "summary": "Gardeners charge about £20–£35 an hour, so most one-off tidy-ups cost £50–£200.",
-      "rates": "£20–£35 per hour (typical £27.50), £160–£260 per day. Landscape gardeners charge £180–£330 per day.",
+      "summary": "Gardeners charge about £42 an hour in London and £33 in Cardiff. Mowing a small lawn costs about £65 in London and £45 in Cardiff.",
+      "rates": "London: about £28–£60 an hour (typical £42) and £235–£355 a day. Cardiff: about £15–£56 an hour (typical £33) and £115–£235 a day.",
       "dayRate": {
-        "low": 160,
-        "high": 260
+        "low": 120,
+        "high": 240
+      },
+      "cityPercent": {
+        "london": 135,
+        "cardiff": 95
       },
       "jobs": [
         {
           "key": "mow-lawn",
           "name": "Mow and edge a small lawn",
-          "low": 25,
-          "typical": 35,
-          "high": 45
+          "low": 30,
+          "typical": 47,
+          "high": 64,
+          "cities": {
+            "london": {
+              "low": 38,
+              "typical": 65,
+              "high": 93
+            },
+            "cardiff": {
+              "low": 29,
+              "typical": 45,
+              "high": 60
+            }
+          }
         },
         {
           "key": "hedge-trim-hour",
           "name": "Trim hedges (team with tools)",
           "low": 60,
-          "typical": 90,
-          "high": 120,
+          "typical": 69.5,
+          "high": 80.5,
+          "cities": {
+            "london": {
+              "low": 85.5,
+              "typical": 97.5,
+              "high": 111.5
+            },
+            "cardiff": {
+              "low": 57,
+              "typical": 66,
+              "high": 76.5
+            }
+          },
           "unit": "per hour"
         },
         {
@@ -1069,9 +2226,21 @@
         {
           "key": "garden-tidy",
           "name": "Garden tidy-up (4 hours)",
-          "low": 80,
-          "typical": 110,
-          "high": 140
+          "low": 100,
+          "typical": 125,
+          "high": 150,
+          "cities": {
+            "london": {
+              "low": 115,
+              "typical": 155,
+              "high": 165
+            },
+            "cardiff": {
+              "low": 95,
+              "typical": 120,
+              "high": 145
+            }
+          }
         },
         {
           "key": "overgrown",
@@ -1093,6 +2262,20 @@
           "low": 250,
           "typical": 325,
           "high": 400
+        },
+        {
+          "key": "stump-grind",
+          "name": "Grind out a tree stump",
+          "low": 105,
+          "typical": 170,
+          "high": 275,
+          "cities": {
+            "london": {
+              "low": 145,
+              "typical": 235,
+              "high": 370
+            }
+          }
         }
       ],
       "included": "Labour, the gardener's own mower, trimmers and hand tools, bagging cuttings.",
@@ -1122,54 +2305,105 @@
         "removals"
       ],
       "name": "Movers and removals",
-      "summary": "A local move with two people and a van costs about £50–£80 an hour. A full move is roughly £450 for 1 bedroom up to £1,200 for 4 bedrooms, before packing.",
-      "rates": "£50–£80 per hour for two movers and a van; packers about £35 per hour.",
+      "summary": "Two movers and a van cost about £65 an hour in London and £54 in Cardiff. A full move in Cardiff costs about £355 for 1 bedroom up to £1,115 for 4 bedrooms, before packing.",
+      "rates": "Two movers and a van: London about £57–£102 an hour (typical £65), Cardiff about £46–£70 (typical £54). Most have a 2-hour minimum; London adds the Congestion Charge and ULEZ at cost.",
       "dayRate": {
-        "low": 400,
-        "high": 640
+        "low": 350,
+        "high": 520
+      },
+      "cityPercent": {
+        "london": 115,
+        "cardiff": 95
       },
       "jobs": [
         {
           "key": "few-items",
           "name": "Man and van, a few items (2 hours)",
-          "low": 100,
-          "typical": 130,
-          "high": 160
+          "low": 80,
+          "typical": 115,
+          "high": 145,
+          "cities": {
+            "london": {
+              "low": 115,
+              "typical": 130,
+              "high": 205
+            },
+            "cardiff": {
+              "low": 76,
+              "typical": 105,
+              "high": 140
+            }
+          }
         },
         {
           "key": "move-1bed",
           "name": "1-bed move",
-          "low": 350,
-          "typical": 450,
-          "high": 550
+          "low": 200,
+          "typical": 370,
+          "high": 550,
+          "cities": {
+            "cardiff": {
+              "low": 190,
+              "typical": 355,
+              "high": 520
+            }
+          }
         },
         {
           "key": "move-2bed",
           "name": "2-bed move",
-          "low": 500,
-          "typical": 600,
-          "high": 700
+          "low": 350,
+          "typical": 490,
+          "high": 685,
+          "cities": {
+            "cardiff": {
+              "low": 335,
+              "typical": 465,
+              "high": 650
+            }
+          }
         },
         {
           "key": "move-3bed",
           "name": "3-bed move",
-          "low": 750,
-          "typical": 900,
-          "high": 1050
+          "low": 500,
+          "typical": 875,
+          "high": 980,
+          "cities": {
+            "cardiff": {
+              "low": 475,
+              "typical": 830,
+              "high": 930
+            }
+          }
         },
         {
           "key": "move-4bed",
           "name": "4-bed move",
-          "low": 1000,
-          "typical": 1200,
-          "high": 1400
+          "low": 800,
+          "typical": 1175,
+          "high": 1760,
+          "cities": {
+            "cardiff": {
+              "low": 760,
+              "typical": 1115,
+              "high": 1675
+            }
+          }
         },
         {
           "key": "packing",
           "name": "Packing service (1–4 bed)",
-          "low": 250,
-          "typical": 400,
-          "high": 600
+          "low": 150,
+          "typical": 365,
+          "high": 585,
+          "cities": {
+            "cardiff": {
+              "low": 145,
+              "typical": 350,
+              "high": 560
+            }
+          }
         }
       ],
       "included": "Loading, transport, unloading into the right rooms, blankets and straps, basic goods-in-transit cover.",
@@ -1198,26 +2432,49 @@
         "fire"
       ],
       "name": "Fire safety",
-      "summary": "Fitting a battery smoke alarm costs about £25–£75; mains-wired alarms are £150–£250 each. A fire risk assessment for a small building starts at about £150.",
-      "rates": "Mains-wired work is priced at electrician rates (£45–£65 per hour).",
+      "summary": "Fitting a battery smoke alarm costs about £55, and mains-wired alarms about £150–£170 each. A fire risk assessment costs about £160 for a flat and £230–£265 for an HMO, much the same in London and Cardiff.",
+      "rates": "Mains-wired work is priced at electrician rates. Fire risk assessments are priced much the same across the UK.",
       "dayRate": {
         "low": 400,
         "high": 550
+      },
+      "cityPercent": {
+        "london": 100,
+        "cardiff": 100
       },
       "jobs": [
         {
           "key": "battery-alarm",
           "name": "Fit a battery smoke or heat alarm",
-          "low": 25,
-          "typical": 50,
-          "high": 75
+          "low": 38,
+          "typical": 56,
+          "high": 84,
+          "cities": {
+            "london": {
+              "low": 38,
+              "typical": 56,
+              "high": 84
+            }
+          }
         },
         {
           "key": "mains-alarm",
           "name": "Fit a mains-wired alarm",
-          "low": 150,
-          "typical": 200,
-          "high": 250
+          "low": 95,
+          "typical": 150,
+          "high": 205,
+          "cities": {
+            "london": {
+              "low": 90,
+              "typical": 165,
+              "high": 195
+            },
+            "cardiff": {
+              "low": 95,
+              "typical": 150,
+              "high": 205
+            }
+          }
         },
         {
           "key": "app-alarm",
@@ -1242,24 +2499,97 @@
         },
         {
           "key": "fra-small",
-          "name": "Fire risk assessment, small building",
-          "low": 149,
-          "typical": 324,
-          "high": 499
+          "name": "Fire risk assessment, flat or small premises",
+          "low": 94,
+          "typical": 165,
+          "high": 280,
+          "cities": {
+            "london": {
+              "low": 71,
+              "typical": 155,
+              "high": 235
+            },
+            "cardiff": {
+              "low": 94,
+              "typical": 165,
+              "high": 280
+            }
+          }
         },
         {
           "key": "fra-medium",
-          "name": "Fire risk assessment, medium building",
-          "low": 249,
-          "typical": 424,
-          "high": 599
+          "name": "Fire risk assessment, block common parts",
+          "low": 190,
+          "typical": 370,
+          "high": 835,
+          "cities": {
+            "london": {
+              "low": 190,
+              "typical": 370,
+              "high": 835
+            }
+          }
         },
         {
           "key": "grade-a-system",
           "name": "Grade A alarm system (HMO or block)",
-          "low": 1750,
-          "typical": 2500,
-          "high": 3000
+          "low": 1140,
+          "typical": 2140,
+          "high": 3255,
+          "cities": {
+            "london": {
+              "low": 1140,
+              "typical": 2140,
+              "high": 3255
+            }
+          }
+        },
+        {
+          "key": "fra-hmo",
+          "name": "Fire risk assessment, HMO",
+          "low": 170,
+          "typical": 265,
+          "high": 365,
+          "cities": {
+            "london": {
+              "low": 140,
+              "typical": 230,
+              "high": 420
+            },
+            "cardiff": {
+              "low": 170,
+              "typical": 265,
+              "high": 365
+            }
+          }
+        },
+        {
+          "key": "grade-d-system",
+          "name": "Interlinked mains alarms, 1–3 bed house (Grade D)",
+          "low": 375,
+          "typical": 510,
+          "high": 740,
+          "cities": {
+            "london": {
+              "low": 375,
+              "typical": 510,
+              "high": 740
+            }
+          }
+        },
+        {
+          "key": "emergency-light",
+          "name": "Fit an emergency light",
+          "low": 71,
+          "typical": 98,
+          "high": 130,
+          "cities": {
+            "london": {
+              "low": 71,
+              "typical": 98,
+              "high": 130
+            }
+          }
         }
       ],
       "included": "Fitting, testing, and a certificate for mains-wired and Grade A systems.",
