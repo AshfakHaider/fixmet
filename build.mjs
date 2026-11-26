@@ -223,11 +223,17 @@ function webPageLd({ path, title, description, breadcrumb }) {
 
 // ---------- layout ----------
 
+// A small "Coming soon" tag for town links in the menu, drawer and footer.
+// (A function, not a const: towns' live flags are read at call time.)
+function soonTag(town) {
+  return town.live ? '' : ' <span class="soon-tag">Coming soon</span>';
+}
+
 function header() {
   const tradeLinks = trades
     .map((t) => `<a href="/${t.slug}/"><span class="ico">${icon(t.slug, 20)}</span><span>${esc(t.name)}<small>From ${gbp(fromPrice(t, null))}</small></span></a>`)
     .join('');
-  const townLinks = towns.map((t) => `<a href="/areas/${t.slug}/">${esc(t.name)}</a>`).join('');
+  const townLinks = towns.map((t) => `<a href="/areas/${t.slug}/">${esc(t.name)}${soonTag(t)}</a>`).join('');
   return `<a class="skip" href="#main">Skip to content</a>
 <header class="header">
   <div class="wrap">
@@ -257,7 +263,7 @@ function header() {
   <h2>Services</h2>
   <div class="drawer-grid">${trades.map((t) => `<a href="/${t.slug}/"><span class="ico">${icon(t.slug, 18)}</span>${esc(t.name)}</a>`).join('')}</div>
   <h2>Areas</h2>
-  <div class="drawer-grid">${towns.map((t) => `<a href="/areas/${t.slug}/"><span class="ico">${icon('pin', 18)}</span>${esc(t.name)}</a>`).join('')}</div>
+  <div class="drawer-grid">${towns.map((t) => `<a href="/areas/${t.slug}/"><span class="ico">${icon('pin', 18)}</span><span>${esc(t.name)}${soonTag(t)}</span></a>`).join('')}</div>
   <h2>Fixmet</h2>
   <div class="drawer-grid"><a href="/how-it-works/">How it works</a><a href="/pricing/">Pricing</a><a href="/contractors/">For contractors</a><a href="/help/">Help &amp; FAQs</a><a href="/about/">About us</a><a href="/contact/">Contact us</a></div>
 </div>`;
@@ -278,7 +284,7 @@ function footer() {
       </div>
       <div>
         <h2>Areas</h2>
-        <ul>${towns.map((t) => `<li><a href="/areas/${t.slug}/">${esc(t.name)}</a></li>`).join('')}<li><a href="/areas/">All areas</a></li></ul>
+        <ul>${towns.map((t) => `<li><a href="/areas/${t.slug}/">${esc(t.name)}${soonTag(t)}</a></li>`).join('')}<li><a href="/areas/">All areas</a></li></ul>
       </div>
       <div>
         <h2>Fixmet</h2>
