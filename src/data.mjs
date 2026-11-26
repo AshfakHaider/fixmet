@@ -223,8 +223,10 @@ export const trades = [
  * Towns. Keep only the places Fixmet actually covers, or customers will find
  * pages for areas where nobody can come.
  * districts: postcode districts shown on the page (local relevance for search).
+ * partOf: a borough served as part of a bigger live city (Croydon is London).
  * live: Fixmet takes bookings here. Other towns show a "Coming soon" badge
- *   and expected prices, and keep their pages for search.
+ *   and expected prices, and keep their pages for search. When a city opens,
+ *   also switch it on in Admin → Settings → Service area ("Live in ...").
  * priceLevel: rough price level against the UK figures (100 = the same),
  *   for towns without researched prices. An estimate from regional trade
  *   rates, to be checked against local firms before launch.
@@ -249,6 +251,7 @@ export const towns = [
     region: 'Greater London',
     london: true,
     live: true,
+    partOf: 'London',
     districts: ['CR0', 'CR2', 'CR7', 'CR8', 'SE25'],
     areas: ['South Croydon', 'Thornton Heath', 'Purley', 'Addiscombe', 'Selhurst'],
     near: ['london'],

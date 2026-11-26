@@ -613,7 +613,7 @@ function commonFaqs(trade, town) {
 const tradeTile = (t, town) =>
   `<a class="tile" href="/${t.slug}/${town ? `${town.slug}/` : ''}"><span class="ico">${icon(t.slug, 22)}</span><span><b>${esc(t.name)}</b><small>From <strong>${gbp(fromPrice(t, town))}</strong></small></span><span class="tile-go">${icon('chevron', 20)}</span></a>`;
 const townTile = (t, trade) =>
-  `<a class="tile" href="${trade ? `/${trade.slug}/${t.slug}/` : `/areas/${t.slug}/`}"><span class="ico">${icon('pin', 22)}</span><span><b>${esc(trade ? `${trade.name} in ${t.name}` : t.name)}${isSoon(t) ? ` ${soonBadge}` : ''}</b><small>${trade ? `${isSoon(t) ? 'Expected from' : 'From'} <strong>${gbp(fromPrice(trade, t))}</strong>` : esc(t.region)}</small></span><span class="tile-go">${icon('chevron', 20)}</span></a>`;
+  `<a class="tile" href="${trade ? `/${trade.slug}/${t.slug}/` : `/areas/${t.slug}/`}"><span class="ico">${icon('pin', 22)}</span><span><b>${esc(trade ? `${trade.name} in ${t.name}` : t.name)}${isSoon(t) ? ` ${soonBadge}` : ''}</b><small>${trade ? `${isSoon(t) ? 'Expected from' : 'From'} <strong>${gbp(fromPrice(trade, t))}</strong>` : esc(t.partOf ? `Part of ${t.partOf}` : t.region)}</small></span><span class="tile-go">${icon('chevron', 20)}</span></a>`;
 
 function simpleHero({ crumbs, eyebrow, h1, lead, extra = '' }) {
   return `<section class="hero">
@@ -691,7 +691,7 @@ function tradeTownPage(trade, town) {
     ${crumbs.html}
     <div class="hero-grid">
       <div class="hero-copy">
-        ${soon ? `<span class="pill"><span class="dot">${icon('clock', 14)}</span>Coming soon to ${esc(town.name)}</span>` : `<span class="pill"><span class="dot">${icon('pin', 14)}</span>${esc(cap(trade.plural))} across ${esc(town.name)}</span>`}
+        ${soon ? `<span class="pill"><span class="dot">${icon('clock', 14)}</span>Coming soon to ${esc(town.name)}</span>` : town.partOf ? `<span class="pill"><span class="dot">${icon('check', 14)}</span>Live now · part of our ${esc(town.partOf)} service</span>` : `<span class="pill"><span class="dot">${icon('pin', 14)}</span>${esc(cap(trade.plural))} across ${esc(town.name)}</span>`}
         <h1>${esc(trade.name)} in <span class="accent">${esc(town.name)}</span> at a fixed price</h1>
         <p class="lead">${soon ? `${esc(trade.intro)} Fixmet isn't taking bookings in ${esc(town.name)} yet. Here's what jobs are expected to cost when we open, so you can compare.` : `${esc(trade.intro)} Send a few photos and get a fixed price in about a minute, then a vetted local ${esc(who(trade))} can come today or when it suits you.`}</p>
         <p class="from">${soon ? 'Expected from' : 'From'} <strong>${gbp(from)}</strong>${trade.guidePrice ? '<small>guide price, confirmed on site</small>' : `<small>${town.london ? 'London price, ' : ''}plus parts</small>`}</p>
@@ -861,7 +861,7 @@ function townHubPage(town) {
   const body = `
 ${simpleHero({
   crumbs,
-  eyebrow: soon ? `${esc(town.region)} · coming soon` : esc(town.region),
+  eyebrow: soon ? `${esc(town.region)} · coming soon` : town.partOf ? `Live now · part of our ${esc(town.partOf)} service` : esc(town.region),
   h1: `Home services in <span class="accent">${esc(town.name)}</span>`,
   lead: soon
     ? `Fixmet is coming to ${esc(town.areas.slice(0, 4).join(', '))} and the rest of ${esc(town.name)}. Until then, see what each service is expected to cost.`
