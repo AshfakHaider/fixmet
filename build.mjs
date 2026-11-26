@@ -533,6 +533,20 @@ function breakdown(trade, town) {
       </div>`;
 }
 
+// When a job costs more because of the time it starts (UK time). The
+// percentages and each trade's group come from the backend's price data.
+function outOfHoursNote(g) {
+  const t = priceGuides.timePricing;
+  const more = (p) => `${p - 100}% more`;
+  if (g.timePricingGroup === 'emergency') {
+    return `Ranges are for weekdays and Saturdays, 08:00 to 18:00. Evenings (18:00 to 22:00) cost ${more(t.evening)}, Sundays ${more(t.sunday)}, and nights (22:00 to 08:00) and bank holidays ${more(t.night)}. The app shows the price for the time you pick before you book.`;
+  }
+  if (g.timePricingGroup === 'removals') {
+    return `Moves on a Saturday or Sunday cost ${more(t.removalsWeekend)}, and nights (22:00 to 08:00) and bank holidays ${more(t.plannedNight)}. Weekday evenings are the normal price. The app shows the price for the time you pick before you book.`;
+  }
+  return `Evenings and weekends are the normal price. Nights (22:00 to 08:00) and bank holidays cost ${more(t.plannedNight)}. The app shows the price for the time you pick before you book.`;
+}
+
 function guideDetails(trade) {
   const g = trade.guideData;
   return `<div class="guide-grid">
@@ -540,6 +554,7 @@ function guideDetails(trade) {
       <div class="card"${reveal(1)}><h3>Not included</h3><p>${esc(g.notIncluded)}</p></div>
       <div class="card"${reveal(2)}><h3>What can raise the price</h3><ul class="raisers">${[{ label: priceGuides.urgentRaiser.label }, ...g.raisers].map((r) => `<li>${esc(r.label)}</li>`).join('')}</ul></div>
     </div>
+    <p class="note">${esc(outOfHoursNote(g))}</p>
     <p class="note">${esc(g.rates)} Ranges are checked against what local firms charge, and there's no VAT on top (checked ${GUIDES_MONTH}). Your price in the app always sits inside the range for your area, unless your photos show one of the reasons above; then you're told why. If the contractor finds more work on the day, they can suggest a new price, and you only pay it if you approve it in the app.</p>`;
 }
 

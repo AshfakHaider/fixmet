@@ -3,7 +3,14 @@
   "currency": "GBP",
   "urgentRaiser": {
     "key": "urgent",
-    "label": "Evening, weekend or emergency work"
+    "label": "Instant job: a pro is sent straight away"
+  },
+  "timePricing": {
+    "evening": 135,
+    "sunday": 120,
+    "night": 175,
+    "plannedNight": 125,
+    "removalsWeekend": 110
   },
   "guides": [
     {
@@ -260,7 +267,8 @@
           "key": "premium-parts",
           "label": "Parts that cost more than standard"
         }
-      ]
+      ],
+      "timePricingGroup": "emergency"
     },
     {
       "categoryIds": [
@@ -444,7 +452,8 @@
           "key": "high-ceiling",
           "label": "High ceilings that need a tower or extra ladder work"
         }
-      ]
+      ],
+      "timePricingGroup": "emergency"
     },
     {
       "categoryIds": [
@@ -682,7 +691,8 @@
           "key": "extras",
           "label": "Extra rooms, inside fridges and cupboards, or balconies"
         }
-      ]
+      ],
+      "timePricingGroup": "planned"
     },
     {
       "categoryIds": [
@@ -850,7 +860,8 @@
           "key": "pattern-match",
           "label": "Patterned carpet that needs matching"
         }
-      ]
+      ],
+      "timePricingGroup": "planned"
     },
     {
       "categoryIds": [
@@ -1028,7 +1039,8 @@
           "key": "detailed-woodwork",
           "label": "Lots of woodwork, spindles or detailed mouldings"
         }
-      ]
+      ],
+      "timePricingGroup": "planned"
     },
     {
       "categoryIds": [
@@ -1233,7 +1245,8 @@
           "key": "parking",
           "label": "Parking charges or congestion zones"
         }
-      ]
+      ],
+      "timePricingGroup": "planned"
     },
     {
       "categoryIds": [
@@ -1344,7 +1357,8 @@
           "key": "bespoke-size",
           "label": "Bespoke sizes that need cutting or building to measure"
         }
-      ]
+      ],
+      "timePricingGroup": "planned"
     },
     {
       "categoryIds": [
@@ -1500,7 +1514,8 @@
           "key": "hidden-problems",
           "label": "Hidden problems such as failed foundations or damp"
         }
-      ]
+      ],
+      "timePricingGroup": "planned"
     },
     {
       "categoryIds": [
@@ -1664,7 +1679,8 @@
           "key": "rare-tiles",
           "label": "Rare or reclaimed tiles that are hard to match"
         }
-      ]
+      ],
+      "timePricingGroup": "emergency"
     },
     {
       "categoryIds": [
@@ -1830,7 +1846,8 @@
           "key": "cast-iron",
           "label": "Cast-iron gutters"
         }
-      ]
+      ],
+      "timePricingGroup": "planned"
     },
     {
       "categoryIds": [
@@ -1963,7 +1980,8 @@
           "key": "small-panes",
           "label": "Lots of small panes such as Georgian or leaded windows"
         }
-      ]
+      ],
+      "timePricingGroup": "planned"
     },
     {
       "categoryIds": [
@@ -2158,7 +2176,8 @@
           "key": "steps-walls",
           "label": "Steps, walls and edging on top of the flat area"
         }
-      ]
+      ],
+      "timePricingGroup": "planned"
     },
     {
       "categoryIds": [
@@ -2297,7 +2316,8 @@
           "key": "no-side-access",
           "label": "No side access, so everything goes through the house"
         }
-      ]
+      ],
+      "timePricingGroup": "planned"
     },
     {
       "categoryIds": [
@@ -2425,7 +2445,8 @@
           "key": "peak-dates",
           "label": "Weekends, bank holidays and month-end dates"
         }
-      ]
+      ],
+      "timePricingGroup": "removals"
     },
     {
       "categoryIds": [
@@ -2611,7 +2632,8 @@
           "key": "urgent-report",
           "label": "Reports needed urgently for a letting or insurance deadline"
         }
-      ]
+      ],
+      "timePricingGroup": "planned"
     }
   ]
 }
