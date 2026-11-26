@@ -223,6 +223,14 @@ export const trades = [
  * Towns. Keep only the places Fixmet actually covers, or customers will find
  * pages for areas where nobody can come.
  * districts: postcode districts shown on the page (local relevance for search).
+ * live: Fixmet takes bookings here. Other towns show a "Coming soon" badge
+ *   and expected prices, and keep their pages for search.
+ * priceLevel: rough price level against the UK figures (100 = the same),
+ *   for towns without researched prices. An estimate from regional trade
+ *   rates, to be checked against local firms before launch.
+ * londonShare: for dearer towns near London (Bristol, Reading): how far
+ *   prices sit between the UK figures (0) and each trade's London prices (1),
+ *   so they never go above London.
  */
 export const towns = [
   {
@@ -230,6 +238,7 @@ export const towns = [
     name: 'London',
     region: 'Greater London',
     london: true,
+    live: true,
     districts: ['E1', 'E8', 'N1', 'N7', 'NW1', 'NW6', 'SE1', 'SE15', 'SW2', 'SW11', 'W2', 'W12'],
     areas: ['Hackney', 'Islington', 'Camden', 'Southwark', 'Lambeth', 'Wandsworth', 'Westminster', 'Tower Hamlets'],
     near: ['croydon', 'reading'],
@@ -239,6 +248,7 @@ export const towns = [
     name: 'Croydon',
     region: 'Greater London',
     london: true,
+    live: true,
     districts: ['CR0', 'CR2', 'CR7', 'CR8', 'SE25'],
     areas: ['South Croydon', 'Thornton Heath', 'Purley', 'Addiscombe', 'Selhurst'],
     near: ['london'],
@@ -247,6 +257,7 @@ export const towns = [
     slug: 'cardiff',
     name: 'Cardiff',
     region: 'Wales',
+    live: true,
     districts: ['CF3', 'CF5', 'CF10', 'CF11', 'CF14', 'CF23', 'CF24'],
     areas: ['City Centre', 'Cathays', 'Roath', 'Canton', 'Pontcanna', 'Llandaff', 'Whitchurch', 'Splott'],
     near: ['bristol'],
@@ -255,6 +266,7 @@ export const towns = [
     slug: 'manchester',
     name: 'Manchester',
     region: 'Greater Manchester',
+    priceLevel: 100,
     districts: ['M1', 'M4', 'M14', 'M15', 'M16', 'M20', 'M21', 'M50'],
     areas: ['City Centre', 'Didsbury', 'Chorlton', 'Fallowfield', 'Salford Quays', 'Ancoats'],
     near: ['liverpool', 'leeds', 'sheffield'],
@@ -263,6 +275,7 @@ export const towns = [
     slug: 'birmingham',
     name: 'Birmingham',
     region: 'West Midlands',
+    priceLevel: 98,
     districts: ['B1', 'B5', 'B13', 'B15', 'B17', 'B29', 'B30'],
     areas: ['City Centre', 'Edgbaston', 'Moseley', 'Harborne', 'Selly Oak', 'Kings Heath'],
     near: ['leicester', 'nottingham'],
@@ -271,6 +284,7 @@ export const towns = [
     slug: 'leeds',
     name: 'Leeds',
     region: 'West Yorkshire',
+    priceLevel: 97,
     districts: ['LS1', 'LS2', 'LS6', 'LS7', 'LS8', 'LS11', 'LS17'],
     areas: ['City Centre', 'Headingley', 'Chapel Allerton', 'Roundhay', 'Kirkstall'],
     near: ['manchester', 'sheffield'],
@@ -279,6 +293,7 @@ export const towns = [
     slug: 'liverpool',
     name: 'Liverpool',
     region: 'Merseyside',
+    priceLevel: 95,
     districts: ['L1', 'L3', 'L8', 'L15', 'L17', 'L18'],
     areas: ['City Centre', 'Toxteth', 'Wavertree', 'Allerton', 'Aigburth'],
     near: ['manchester'],
@@ -287,6 +302,7 @@ export const towns = [
     slug: 'sheffield',
     name: 'Sheffield',
     region: 'South Yorkshire',
+    priceLevel: 95,
     districts: ['S1', 'S2', 'S7', 'S10', 'S11'],
     areas: ['City Centre', 'Ecclesall', 'Crookes', 'Nether Edge', 'Hillsborough'],
     near: ['leeds', 'manchester', 'nottingham'],
@@ -295,6 +311,7 @@ export const towns = [
     slug: 'bristol',
     name: 'Bristol',
     region: 'South West',
+    londonShare: 0.4,
     districts: ['BS1', 'BS3', 'BS6', 'BS7', 'BS8', 'BS16'],
     areas: ['City Centre', 'Clifton', 'Redland', 'Bedminster', 'Bishopston', 'Fishponds'],
     near: ['cardiff', 'reading'],
@@ -303,6 +320,7 @@ export const towns = [
     slug: 'nottingham',
     name: 'Nottingham',
     region: 'East Midlands',
+    priceLevel: 96,
     districts: ['NG1', 'NG2', 'NG5', 'NG7', 'NG9'],
     areas: ['City Centre', 'West Bridgford', 'Beeston', 'Sherwood', 'Lenton'],
     near: ['leicester', 'sheffield', 'birmingham'],
@@ -311,6 +329,7 @@ export const towns = [
     slug: 'leicester',
     name: 'Leicester',
     region: 'East Midlands',
+    priceLevel: 96,
     districts: ['LE1', 'LE2', 'LE3', 'LE4', 'LE5'],
     areas: ['City Centre', 'Clarendon Park', 'Stoneygate', 'Belgrave', 'Aylestone'],
     near: ['nottingham', 'birmingham'],
@@ -319,6 +338,7 @@ export const towns = [
     slug: 'reading',
     name: 'Reading',
     region: 'Berkshire',
+    londonShare: 0.6,
     districts: ['RG1', 'RG2', 'RG4', 'RG6', 'RG30'],
     areas: ['Town Centre', 'Caversham', 'Earley', 'Tilehurst', 'Whitley'],
     near: ['london', 'bristol'],

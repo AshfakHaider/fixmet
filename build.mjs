@@ -26,12 +26,23 @@ const V = Date.now().toString(36);
 
 const round = (n) => Math.round(n);
 // London and Cardiff have their own prices for each trade (from the price
-// guides); everywhere else uses the national figures.
+// guides). Other towns use the national figures times their estimated
+// price level (see towns in data.mjs) until we check them.
 const cityOf = (town) => (town?.london ? 'london' : town?.slug === 'cardiff' ? 'cardiff' : null);
 const area = (town, trade) => {
   const city = cityOf(town);
-  return city ? trade.guideData.cityPercent[city] / 100 : 1;
+  if (city) return trade.guideData.cityPercent[city] / 100;
+  if (town?.londonShare) {
+    const london = trade.guideData.cityPercent.london / 100;
+    return 1 + (london - 1) * town.londonShare;
+  }
+  return (town?.priceLevel ?? 100) / 100;
 };
+// Towns where Fixmet doesn't take bookings yet: their pages stay up for
+// search, with a "Coming soon" badge and expected prices.
+const isSoon = (town) => Boolean(town) && !town.live;
+const soonBadge = '<span class="badge badge--amber">Coming soon</span>';
+const liveTowns = () => towns.filter((t) => t.live);
 const fromPrice = (trade, town) => round((trade.callout + trade.minHours * trade.rate) * area(town, trade));
 // A full working day (8 hours on site) at Fixmet's rate card, plus the call-out.
 const DAY_HOURS = 8;
@@ -60,7 +71,12 @@ const jobPrice = (trade, job, town) => jobRange(trade, job, town).typical;
 // How a town's prices compare with the rest of the UK for this trade.
 const cityNote = (trade, town) => {
   const city = cityOf(town);
-  if (!city) return '';
+  if (!city) {
+    if (!isSoon(town)) return '';
+    const level = Math.round(area(town, trade) * 100) - 100;
+    const vs = Math.abs(level) < 3 ? 'about the same as the UK average' : `about ${Math.abs(level)}% ${level > 0 ? 'above' : 'below'} the UK average`;
+    return ` These are expected ${town.name} prices, ${vs}. We check them against local firms before we open in ${town.name}.`;
+  }
   const pct = trade.guideData.cityPercent[city] - 100;
   const name = city === 'london' ? 'London' : 'Cardiff';
   if (Math.abs(pct) < 3) return ` ${name} prices are about the same as elsewhere in the UK.`;
@@ -375,7 +391,7 @@ function mockCard(trade, town) {
           <div class="mock-price"><div><span>${esc(job.name)}</span><strong>${gbp(jobPrice(trade, job, town))}</strong></div></div>
           <div class="mock-meta">
             <div><span>Area</span><b>${esc(town ? town.name : 'Near you')}</b></div>
-            <div><span>Contractor</span><b>Today or a time you pick</b></div>
+            <div><span>Contractor</span><b>${isSoon(town) ? 'Coming soon' : 'Today or a time you pick'}</b></div>
             <div><span>Charged</span><b>When the job is done</b></div>
           </div>
         </div>
@@ -561,10 +577,17 @@ function guideDetails(trade) {
 function commonFaqs(trade, town) {
   const where = town ? ` in ${town.name}` : '';
   const from = fromPrice(trade, town);
+  const soon = isSoon(town);
   return [
+    ...(soon
+      ? [[
+          `Can I book ${an(who(trade))} in ${town.name} with Fixmet?`,
+          `Not yet. Fixmet is live in ${liveTowns().map((t) => t.name).join(', ').replace(/, ([^,]*)$/, ' and $1')} and is coming to ${town.name} soon. The prices on this page are what we expect jobs to cost here.`,
+        ]]
+      : []),
     [
       `How much does ${an(who(trade))} cost${where}?`,
-      `Jobs start from ${gbp(from)}${town?.london ? ' at London prices' : ''}. The price is worked out from ${gbp(round(trade.rate * area(town, trade)))} an hour${trade.callout ? `, a ${gbp(round(trade.callout * area(town, trade)))} call-out fee` : ''} and a minimum of ${hours(trade.minHours)}, plus parts. You see the exact fixed price in the app before you book.`,
+      `${soon ? 'Jobs are expected to start' : 'Jobs start'} from ${gbp(from)}${town?.london ? ' at London prices' : ''}. The price is worked out from ${gbp(round(trade.rate * area(town, trade)))} an hour${trade.callout ? `, a ${gbp(round(trade.callout * area(town, trade)))} call-out fee` : ''} and a minimum of ${hours(trade.minHours)}, plus parts. You see the exact fixed price in the app before you book.`,
     ],
     [
       'Is the price really fixed?',
@@ -584,7 +607,7 @@ function commonFaqs(trade, town) {
 const tradeTile = (t, town) =>
   `<a class="tile" href="/${t.slug}/${town ? `${town.slug}/` : ''}"><span class="ico">${icon(t.slug, 22)}</span><span><b>${esc(t.name)}</b><small>From <strong>${gbp(fromPrice(t, town))}</strong></small></span><span class="tile-go">${icon('chevron', 20)}</span></a>`;
 const townTile = (t, trade) =>
-  `<a class="tile" href="${trade ? `/${trade.slug}/${t.slug}/` : `/areas/${t.slug}/`}"><span class="ico">${icon('pin', 22)}</span><span><b>${esc(trade ? `${trade.name} in ${t.name}` : t.name)}</b><small>${trade ? `From <strong>${gbp(fromPrice(trade, t))}</strong>` : esc(t.region)}</small></span><span class="tile-go">${icon('chevron', 20)}</span></a>`;
+  `<a class="tile" href="${trade ? `/${trade.slug}/${t.slug}/` : `/areas/${t.slug}/`}"><span class="ico">${icon('pin', 22)}</span><span><b>${esc(trade ? `${trade.name} in ${t.name}` : t.name)}${isSoon(t) ? ` ${soonBadge}` : ''}</b><small>${trade ? `${isSoon(t) ? 'Expected from' : 'From'} <strong>${gbp(fromPrice(trade, t))}</strong>` : esc(t.region)}</small></span><span class="tile-go">${icon('chevron', 20)}</span></a>`;
 
 function simpleHero({ crumbs, eyebrow, h1, lead, extra = '' }) {
   return `<section class="hero">
@@ -602,6 +625,15 @@ function simpleHero({ crumbs, eyebrow, h1, lead, extra = '' }) {
 
 // ---------- pages ----------
 
+// What a coming-soon page offers instead of "book now": the live cities,
+// and a way to ask for Fixmet here (which tells us where demand is).
+function soonCta(trade, town) {
+  const live = liveTowns();
+  return `<div class="soon-cta">
+          <p>Live now in ${live.map((t) => `<a href="/${trade ? `${trade.slug}/` : 'areas/'}${t.slug}/">${esc(t.name)}</a>`).join(', ').replace(/, ([^,]*)$/, ' and $1')}. <a href="/contact/">Ask us to open in ${esc(town.name)}</a>.</p>
+        </div>`;
+}
+
 function tradeTownPage(trade, town) {
   const path = `/${trade.slug}/${town.slug}/`;
   const from = fromPrice(trade, town);
@@ -611,8 +643,13 @@ function tradeTownPage(trade, town) {
     { name: town.name, path },
   ]);
   const faqs = commonFaqs(trade, town);
-  const title = `${trade.name} in ${town.name} from ${gbp(from)} | Fixmet`;
-  const description = `Book ${an(who(trade))} in ${town.name} at a fixed price from ${gbp(from)}. Send photos, get a price in about a minute and pay only when the job is done.`;
+  const soon = isSoon(town);
+  const title = soon
+    ? `${trade.name} in ${town.name}: prices from ${gbp(from)} (coming soon) | Fixmet`
+    : `${trade.name} in ${town.name} from ${gbp(from)} | Fixmet`;
+  const description = soon
+    ? `Fixmet is coming to ${town.name}. See what ${an(who(trade))} is expected to cost, from ${gbp(from)}, with fixed prices from your photos and payment only when the job is done.`
+    : `Book ${an(who(trade))} in ${town.name} at a fixed price from ${gbp(from)}. Send photos, get a price in about a minute and pay only when the job is done.`;
   const otherTrades = trades.filter((t) => t.slug !== trade.slug);
   const nearby = (town.near ?? []).map((s) => townBySlug[s]).filter(Boolean);
 
@@ -648,11 +685,11 @@ function tradeTownPage(trade, town) {
     ${crumbs.html}
     <div class="hero-grid">
       <div class="hero-copy">
-        <span class="pill"><span class="dot">${icon('pin', 14)}</span>${esc(cap(trade.plural))} across ${esc(town.name)}</span>
+        ${soon ? `<span class="pill"><span class="dot">${icon('clock', 14)}</span>Coming soon to ${esc(town.name)}</span>` : `<span class="pill"><span class="dot">${icon('pin', 14)}</span>${esc(cap(trade.plural))} across ${esc(town.name)}</span>`}
         <h1>${esc(trade.name)} in <span class="accent">${esc(town.name)}</span> at a fixed price</h1>
-        <p class="lead">${esc(trade.intro)} Send a few photos and get a fixed price in about a minute, then a vetted local ${esc(who(trade))} can come today or when it suits you.</p>
-        <p class="from">From <strong>${gbp(from)}</strong>${trade.guidePrice ? '<small>guide price, confirmed on site</small>' : `<small>${town.london ? 'London price, ' : ''}plus parts</small>`}</p>
-        <div class="cta-row" data-hero-cta>${storeButtons()}</div>
+        <p class="lead">${soon ? `${esc(trade.intro)} Fixmet isn't taking bookings in ${esc(town.name)} yet. Here's what jobs are expected to cost when we open, so you can compare.` : `${esc(trade.intro)} Send a few photos and get a fixed price in about a minute, then a vetted local ${esc(who(trade))} can come today or when it suits you.`}</p>
+        <p class="from">${soon ? 'Expected from' : 'From'} <strong>${gbp(from)}</strong>${trade.guidePrice ? '<small>guide price, confirmed on site</small>' : `<small>${town.london ? 'London price, ' : ''}plus parts</small>`}</p>
+        <div class="cta-row" data-hero-cta>${soon ? soonCta(trade, town) : storeButtons()}</div>
         <ul class="ticks"><li>${icon('check', 18)}ID-checked, reviews shown</li><li>${icon('check', 18)}Pay when the job is done</li><li>${icon('check', 18)}${esc(town.districts.slice(0, 3).join(', '))} and more</li></ul>
       </div>
       ${mockCard(trade, town)}
@@ -679,9 +716,9 @@ ${trustBar()}
   <div class="wrap">
     <div class="section-head section-head--row"${reveal()}>
       <div style="display:grid;gap:14px">
-        <span class="eyebrow">Prices · checked ${MONTH}</span>
+        <span class="eyebrow">${soon ? `Expected prices · ${MONTH}` : `Prices · checked ${MONTH}`}</span>
         <h2 id="prices-h">${esc(trade.name)} prices in ${esc(town.name)}</h2>
-        <p class="lead">What most people pay for common jobs${town.london ? ', at London rates' : ''}. Your exact price depends on the photos you send, sits inside these ranges and is fixed before you book.</p>
+        <p class="lead">${soon ? `What common jobs are expected to cost in ${esc(town.name)}, estimated from UK trade rates. When we open here, your exact price depends on the photos you send and is fixed before you book.` : `What most people pay for common jobs${town.london ? ', at London rates' : ''}. Your exact price depends on the photos you send, sits inside these ranges and is fixed before you book.`}</p>
       </div>
     </div>
     <div class="price-layout">
@@ -711,7 +748,7 @@ ${faqSection(faqs, `${trade.name} in ${town.name}: your questions`)}
       </div>
       <div class="card"${reveal(1)}>
         <h3>${esc(cap(trade.plural))} nearby</h3>
-        <ul class="chips">${nearby.map((t) => `<li><a href="/${trade.slug}/${t.slug}/">${icon('pin', 15)}${esc(trade.name)} in ${esc(t.name)}</a></li>`).join('')}<li><a href="/${trade.slug}/">${esc(trade.name)}: all areas</a></li></ul>
+        <ul class="chips">${nearby.map((t) => `<li><a href="/${trade.slug}/${t.slug}/">${icon('pin', 15)}${esc(trade.name)} in ${esc(t.name)}${isSoon(t) ? ' (soon)' : ''}</a></li>`).join('')}<li><a href="/${trade.slug}/">${esc(trade.name)}: all areas</a></li></ul>
       </div>
     </div>
     <h3 style="margin:40px 0 16px"${reveal()}>Other services in ${esc(town.name)}</h3>
@@ -726,8 +763,12 @@ ${faqSection(faqs, `${trade.name} in ${town.name}: your questions`)}
       description,
       path,
       body,
-      graph: [webPageLd({ path, title, description, breadcrumb: crumbs.ld }), service, faqLd(faqs)],
-      mobileCta: `<span class="mobile-cta-price">From<b>${gbp(from)}</b></span>`,
+      // A coming-soon town has no Service or Offer markup: we don't sell
+      // there yet, and the prices are estimates.
+      graph: soon
+        ? [webPageLd({ path, title, description, breadcrumb: crumbs.ld }), faqLd(faqs)]
+        : [webPageLd({ path, title, description, breadcrumb: crumbs.ld }), service, faqLd(faqs)],
+      mobileCta: `<span class="mobile-cta-price">${soon ? 'Expected from' : 'From'}<b>${gbp(from)}</b></span>`,
     }),
   );
   return path;
@@ -803,16 +844,25 @@ function townHubPage(town) {
     { name: 'Areas', path: '/areas/' },
     { name: town.name, path },
   ]);
-  const title = `Tradespeople in ${town.name} at fixed prices | Fixmet`;
-  const description = `Plumbers, electricians, cleaners, handymen and more in ${town.name}. Get a fixed price from your photos in about a minute and pay when the job is done.`;
+  const soon = isSoon(town);
+  const title = soon
+    ? `Tradespeople in ${town.name}: expected prices (coming soon) | Fixmet`
+    : `Tradespeople in ${town.name} at fixed prices | Fixmet`;
+  const description = soon
+    ? `Fixmet is coming to ${town.name}. See expected prices for plumbers, electricians, cleaners, handymen and more, with fixed prices from your photos.`
+    : `Plumbers, electricians, cleaners, handymen and more in ${town.name}. Get a fixed price from your photos in about a minute and pay when the job is done.`;
   const nearby = (town.near ?? []).map((s) => townBySlug[s]).filter(Boolean);
   const body = `
 ${simpleHero({
   crumbs,
-  eyebrow: esc(town.region),
+  eyebrow: soon ? `${esc(town.region)} · coming soon` : esc(town.region),
   h1: `Home services in <span class="accent">${esc(town.name)}</span>`,
-  lead: `Vetted local tradespeople across ${esc(town.areas.slice(0, 4).join(', '))} and the rest of ${esc(town.name)}. A fixed price from your photos in about a minute.`,
-  extra: `<div data-hero-cta>${finder({ town, heading: `Find a tradesperson in ${town.name}` })}</div>`,
+  lead: soon
+    ? `Fixmet is coming to ${esc(town.areas.slice(0, 4).join(', '))} and the rest of ${esc(town.name)}. Until then, see what each service is expected to cost.`
+    : `Vetted local tradespeople across ${esc(town.areas.slice(0, 4).join(', '))} and the rest of ${esc(town.name)}. A fixed price from your photos in about a minute.`,
+  extra: soon
+    ? soonCta(null, town)
+    : `<div data-hero-cta>${finder({ town, heading: `Find a tradesperson in ${town.name}` })}</div>`,
 })}
 ${trustBar()}
 <section class="section" id="services" aria-labelledby="svc-h">
@@ -821,7 +871,7 @@ ${trustBar()}
     <div class="tiles">${trades.map((t) => tradeTile(t, town)).join('')}</div>
     <div class="links-grid" style="margin-top:40px">
       <div class="card"${reveal()}><h3>Neighbourhoods and postcodes</h3><ul class="chips">${town.areas.map((a) => `<li><span>${esc(a)}</span></li>`).join('')}${town.districts.map((d) => `<li><span>${esc(d)}</span></li>`).join('')}</ul></div>
-      <div class="card"${reveal(1)}><h3>Nearby areas</h3><ul class="chips">${nearby.map((t) => `<li><a href="/areas/${t.slug}/">${icon('pin', 15)}${esc(t.name)}</a></li>`).join('')}<li><a href="/areas/">All areas</a></li></ul></div>
+      <div class="card"${reveal(1)}><h3>Nearby areas</h3><ul class="chips">${nearby.map((t) => `<li><a href="/areas/${t.slug}/">${icon('pin', 15)}${esc(t.name)}${isSoon(t) ? ' (soon)' : ''}</a></li>`).join('')}<li><a href="/areas/">All areas</a></li></ul></div>
     </div>
   </div>
 </section>
@@ -850,19 +900,23 @@ function areasPage() {
     { name: 'Areas', path },
   ]);
   const title = 'Areas we cover | Tradespeople at fixed prices | Fixmet';
-  const description = `Fixmet tradespeople in ${towns.slice(0, 5).map((t) => t.name).join(', ')} and more. Find your town and get a fixed price in about a minute.`;
+  const live = liveTowns();
+  const soon = towns.filter(isSoon);
+  const description = `Fixmet tradespeople in ${live.map((t) => t.name).join(', ')}, and coming soon to ${soon.slice(0, 3).map((t) => t.name).join(', ')} and more. Find your town and see local prices.`;
   const body = `
 ${simpleHero({
   crumbs,
-  eyebrow: `${towns.length} towns and cities`,
+  eyebrow: `Live in ${live.length}, coming to ${soon.length} more`,
   h1: `Tradespeople <span class="accent">near you</span>`,
   lead: 'Find your town to see local prices for every service, or search by postcode.',
   extra: `<div data-hero-cta>${finder({ heading: 'Find a tradesperson near you' })}</div>`,
 })}
 <section class="section" aria-labelledby="towns-h">
   <div class="wrap">
-    <div class="section-head"${reveal()}><span class="eyebrow">Areas</span><h2 id="towns-h">Towns and cities</h2></div>
-    <div class="tiles">${towns.map((t) => townTile(t)).join('')}</div>
+    <div class="section-head"${reveal()}><span class="eyebrow">Book now</span><h2 id="towns-h">Live now</h2></div>
+    <div class="tiles">${live.map((t) => townTile(t)).join('')}</div>
+    <div class="section-head" style="margin-top:48px"${reveal()}><span class="eyebrow">Coming soon</span><h2>Coming soon</h2><p class="lead">See what jobs are expected to cost before we open. <a href="/contact/">Tell us where you'd like Fixmet next</a>.</p></div>
+    <div class="tiles">${soon.map((t) => townTile(t)).join('')}</div>
   </div>
 </section>
 ${howItWorks(null)}`;
@@ -1367,7 +1421,7 @@ for (const [file, svg] of Object.entries(logoFiles())) write(file, svg);
 
 const index = {
   trades: trades.map((t) => [t.slug, t.name, t.plural, fromPrice(t, null), `${t.service} ${t.person ?? ''} ${t.jobs.map((j) => j.name).join(' ')}`]),
-  towns: towns.map((t) => [t.slug, t.name, t.region, t.districts, t.areas]),
+  towns: towns.map((t) => [t.slug, t.name, t.region, t.districts, t.areas, Boolean(t.live)]),
   icons: Object.fromEntries([...trades.map((t) => [t.slug, icon(t.slug, 18)]), ['pin', icon('pin', 18)], ['arrow', icon('arrow', 16)], ['menu', icon('menu', 22)], ['close', icon('close', 22)]]),
   play: site.playStoreUrl,
 };

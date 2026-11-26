@@ -568,3 +568,9 @@ body.menu-open { overflow: hidden; }
   .prices th, .prices td { padding: 14px 12px; }
   .prices td.range { white-space: normal; }
 }
+
+/* Coming-soon towns: badge and the "live now" links in place of booking */
+.soon-cta { display: grid; gap: 10px; justify-items: start; }
+.soon-cta p { margin: 0; color: var(--ink-2); }
+.soon-cta a { color: var(--brand-strong); font-weight: 600; }
+.tile b .badge { margin-left: 6px; vertical-align: middle; font-size: .7rem; padding: 3px 8px; }

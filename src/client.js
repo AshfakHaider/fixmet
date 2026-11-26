@@ -80,7 +80,7 @@
 
   /* ---------- Matching ---------- */
   const trades = INDEX.trades.map(([slug, name, plural, from, words]) => ({ slug, name, plural, from, text: norm(`${name} ${plural} ${words}`), nameN: norm(name) }));
-  const towns = INDEX.towns.map(([slug, name, region, districts, areas]) => ({ slug, name, region, districts, areas, text: norm(`${name} ${region} ${areas.join(' ')}`), nameN: norm(name) }));
+  const towns = INDEX.towns.map(([slug, name, region, districts, areas, live]) => ({ slug, name, region, districts, areas, live, text: norm(`${name} ${region} ${areas.join(' ')}`), nameN: norm(name) }));
   const scoreText = (q, item) => {
     if (!q) return 1;
     if (item.nameN === q) return 100;
@@ -149,7 +149,7 @@
     const tradeInput = $('[name=service]', finder);
     const townInput = $('[name=town]', finder);
     const tradeBox = combobox(tradeInput, findTrades, (t) => `<span class="ico">${INDEX.icons[t.slug]}</span><span>${esc(t.name)}<small>From ${gbp(t.from)}</small></span>`);
-    const townBox = combobox(townInput, findTowns, (t) => `<span class="ico">${INDEX.icons.pin}</span><span>${esc(t.name)}<small>${esc(t.region)}</small></span>`);
+    const townBox = combobox(townInput, findTowns, (t) => `<span class="ico">${INDEX.icons.pin}</span><span>${esc(t.name)}<small>${esc(t.live ? t.region : `${t.region} · coming soon`)}</small></span>`);
     tradeInput.addEventListener('chosen', () => { if (!townInput.value) townInput.focus(); });
     if (finder.dataset.town) townInput.selected = towns.find((t) => t.slug === finder.dataset.town) ?? null;
     if (finder.dataset.trade) tradeInput.selected = trades.find((t) => t.slug === finder.dataset.trade) ?? null;
