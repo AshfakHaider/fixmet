@@ -81,11 +81,26 @@ function hideEmails(html) {
   const quoted = email.replace(/\./g, '\\.');
   const linkPattern = new RegExp('href="mailto:' + quoted + '(?:\\?subject=([^"]*))?"', 'g');
   const textPattern = new RegExp(quoted, 'g');
+  // Structured data (JSON-LD) is JSON, not HTML: a <span> with quotes would
+  // break it for Google, so there the address is only written as plain text.
+  const jsonLd = /(<script[^>]*application\/ld\+json[^>]*>)([\s\S]*?)(<\/script>)/g;
   const result = html
     .replace(linkPattern, (_, subject) =>
       'href="/contact/" data-e="' + reversed + '"' + (subject ? ' data-s="' + subject + '"' : ''),
     )
-    .replace(textPattern, '<span class="js-email" data-e="' + reversed + '">' + shown + '</span>');
+    .split(jsonLd)
+    .map((part, i) =>
+      // split() with 3 groups gives [html, open, json, close, html, ...].
+      i % 4 === 2
+        ? part.replace(textPattern, shown)
+        : i % 4 === 0
+          ? part.replace(
+              textPattern,
+              '<span class="js-email" data-e="' + reversed + '">' + shown + '</span>',
+            )
+          : part,
+    )
+    .join('');
   if (result.includes(email)) throw new Error('hideEmails: email still in page');
   return result;
 }
