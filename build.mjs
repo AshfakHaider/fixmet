@@ -347,6 +347,7 @@ function layout({ title, description, path, body, graph = [], mobileCta, cta, no
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap">
 <link rel="stylesheet" href="/assets/fixmet-pages.css?v=${V}">
+<!-- Changing this script? Update its sha256 in vercel.json's Content-Security-Policy. -->
 <script>document.documentElement.classList.add('js')</script>
 <script src="/assets/fixmet-pages.js?v=${V}" defer></script>
 <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
