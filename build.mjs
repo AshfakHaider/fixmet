@@ -351,6 +351,11 @@ function layout({ title, description, path, body, graph = [], mobileCta, cta, no
 <script>document.documentElement.classList.add('js')</script>
 <script src="/assets/fixmet-pages.js?v=${V}" defer></script>
 <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
+<!-- Vercel Web Analytics -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 ${header()}
