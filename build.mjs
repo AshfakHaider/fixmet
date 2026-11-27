@@ -350,6 +350,8 @@ function layout({ title, description, path, body, graph = [], mobileCta, cta, no
 <!-- Changing this script? Update its sha256 in vercel.json's Content-Security-Policy. -->
 <script>document.documentElement.classList.add('js')</script>
 <script src="/assets/fixmet-pages.js?v=${V}" defer></script>
+<!-- Vercel Web Analytics: counts page views without cookies (same origin, allowed by the CSP). -->
+<script src="/_vercel/insights/script.js" defer></script>
 <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
 </head>
 <body>

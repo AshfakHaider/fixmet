@@ -78,7 +78,7 @@ export const privacy = (site) => {
       'Fixmet is for adults. You must be 18 or over to book a job or work as a contractor, and we do not knowingly collect data from children.',
     ]],
     ['This website', [
-      'This website does not use advertising or analytics cookies. See our Cookie policy for details.',
+      'This website does not use advertising or analytics cookies. We count page visits with Vercel Web Analytics, which sets no cookies and does not identify you. See our Cookie policy for details.',
     ]],
     ['Changes to this policy', [
       'We will update this policy when the way we use data changes. If a change is significant, we will tell you in the app or by email.',
@@ -165,6 +165,7 @@ export const terms = (site) => {
 export const cookies = (site) => [
   ['Our website', [
     'This website does not set advertising or analytics cookies, and it does not track you across other websites.',
+    'We count page visits with Vercel Web Analytics, which sets no cookies and does not identify you: it records the page, where you came from, and your country and device type, so we can see which pages are useful.',
     'Pages load fonts from Google Fonts, which means Google receives your IP address to send the font files. Our hosting provider, Vercel, keeps short-term technical logs to run the site securely.',
   ]],
   ['Our apps', [
