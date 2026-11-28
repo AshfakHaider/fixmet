@@ -1464,5 +1464,7 @@ ${paths.map((p) => `  <url><loc>${url(p)}</loc><lastmod>${BUILD_DATE}</lastmod><
 write('sitemap-services.xml', readFileSync(join(out, 'sitemap.xml'), 'utf8'));
 write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${url('/sitemap.xml')}\n`);
 copyFileSync(join(root, 'assets/favicon.ico'), join(out, 'favicon.ico'));
+// Google Search Console ownership check (Ovalo Official account). Keep it: removing it unverifies the site.
+write('google1bf61f721282718c.html', 'google-site-verification: google1bf61f721282718c.html');
 
 console.log(`Built ${paths.length} pages into dist/`);
